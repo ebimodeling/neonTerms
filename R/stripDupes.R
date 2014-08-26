@@ -8,13 +8,14 @@
 #' @export
 
 stripDupes <- function(input, tbl, db, field){
+  drv <- dbDriver("SQLite")
   
-  db <- dbConnect(drv, dbname = db)
+  dbC <- dbConnect(drv, dbname = db)
   q <- paste("SELECT",field,"FROM",tbl,sep=" ")
-  out <- dbGetQuery(conn = db, q)
+  out <- dbGetQuery(conn = dbC, q)
+  return(!input %in% out)
+  #dindex <- sapply(input, function(x,y){ind <- grep(x,y);ifelse(length(ind) > 0, for(i in ind){ifelse(x == y[i],return(TRUE),return(FALSE))},return(FALSE))},y=out)
   
-  dindex <- sapply(input, function(x,y){ind <- grep(x,y);for(i in ind){ifelse(x == y[i],return(TRUE),return(FALSE))}},y=out)
-  
-  return(dindex)
+  #return(dindex)
   
 }

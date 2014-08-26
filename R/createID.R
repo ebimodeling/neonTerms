@@ -8,13 +8,18 @@
 
 createID <- function(numid, tbl,db){
   drv <- dbDriver("SQLite")
-  db <- dbConnect(drv, dbname=db)
+  dbC <- dbConnect(drv, dbname=db)
   q1 <- paste("PRAGMA table_info(",tbl,")",sep="")
-  eids <- dbGetQuery(conn = db, q1)
+  eids <- dbGetQuery(conn = dbC, q1)
   q2 <- paste("SELECT",eids$name[1],"FROM",tbl,sep=" ")
   
-  out <- dbGetQuery(conn = db, q2)
+  out <- dbGetQuery(conn = dbC, q2)
+  if(length(out[[1]]) == 0){
+    newids <-  1:numid
+  
+  } else {
   newids <- (max(out[[1]])+1):(dim(newDat)[1]+max(out[[1]])+1) 
+  }
   return(newids)
 }
 
