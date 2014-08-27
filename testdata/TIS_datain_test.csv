@@ -1,0 +1,3 @@
+DPName,Dpdescription,Protocol/C3,table,tableDescription,DPNumber,fieldName,description,dataType,units,replicate,sampleFrequency
+PAR sensor,,NEON.DOC.547891,,,NEON.DOM.SIT.DP0.00020,tower top incident,,real,V,1,1 Hz
+PAR sensor,,NEON.DOC.547891,,,NEON.DOM.SIT.DP0.00020,tower top reflected,,real,V,1,1 Hz
