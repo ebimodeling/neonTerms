@@ -18,7 +18,7 @@ createID <- function(numid, tbl,db){
     newids <-  1:numid
   
   } else {
-  newids <- (max(out[[1]])+1):(dim(newDat)[1]+max(out[[1]])+1) 
+  newids <- (max(out[[1]])+1):(numid+max(out[[1]])) 
   }
   return(newids)
 }
