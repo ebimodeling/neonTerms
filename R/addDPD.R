@@ -13,7 +13,7 @@
 addDPD <- function(df, db = NULL,overwrite = F, dcheck = T){
   tbl <- "DataProductDescription"
   drv <- dbDriver("SQLite")
-  namelist <- c("dpID","name","description")
+  namelist <- c("dpID","name","description","level","specDoc","rev")
   if(is.null(db)){
     db <- getOption("termDB")
     if(is.null(db)){stop("You must specify a database. This can be done in the function call or with options(termDB = 'myDB.sqlite')")}
@@ -22,7 +22,7 @@ addDPD <- function(df, db = NULL,overwrite = F, dcheck = T){
   #Check if the table exists
   
   if(!testTbl(tbl,db)){
-    types <- c("TEXT","TEXT","TEXt")
+    types <- c("TEXT","TEXT","TEXT","TEXT","TEXT","TEXT")
     createTbl(tbl,db,namelist,types)
   }
   

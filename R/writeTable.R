@@ -25,7 +25,6 @@ writeTable <- function(df,tbl,namelist, db,overwrite){
   
     ## Write new data to DB
     dbWriteTable(conn = dbC, name = tbl, value = df, row.names = FALSE,append=T)
-    
 
   
   if(overwrite){

@@ -20,6 +20,7 @@ createID <- function(numid, tbl,db){
   } else {
   newids <- (max(out[[1]])+1):(numid+max(out[[1]])) 
   }
+  if(numid == 0){newids <- vector()}
   return(newids)
 }
 

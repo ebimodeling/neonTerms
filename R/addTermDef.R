@@ -13,7 +13,7 @@
 addTermDef <- function(df, db = NULL,overwrite = F, dcheck = T){
   tbl <- "TermDefinition"
   drv <- dbDriver("SQLite")
-  namelist <- c("termID","name","definition","units")
+  namelist <- c("termID","termName","termDefinition","units")
   if(is.null(db)){
     db <- getOption("termDB")
     if(is.null(db)){stop("You must specify a database. This can be done in the function call or with options(termDB = 'myDB.sqlite')")}
@@ -29,7 +29,7 @@ addTermDef <- function(df, db = NULL,overwrite = F, dcheck = T){
   ### Add ID's
   if(dcheck){
     
-    df <- df[stripDupes(df$name,tbl,db,"name"),]
+    df <- df[stripDupes(df$termName,tbl,db,"termName"),]
     termID <- createID(dim(df)[1],tbl,db)
     df <- cbind(termID,df)
   } else {

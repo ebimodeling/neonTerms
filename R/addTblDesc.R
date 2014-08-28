@@ -11,7 +11,7 @@
 addTblDesc <- function(df, db = NULL,overwrite = F){
   tbl <- "TableDescription"
   drv <- dbDriver("SQLite")
-  namelist <- c("tableID","dpID","tableDesc")
+  namelist <- c("tableID","dpID","tableName","tableDesc")
   if(is.null(db)){
     db <- getOption("termDB")
     if(is.null(db)){stop("You must specify a database. This can be done in the function call or with options(termDB = 'myDB.sqlite')")}
@@ -20,7 +20,7 @@ addTblDesc <- function(df, db = NULL,overwrite = F){
   #Check if the table exists
   
   if(!testTbl(tbl,db)){
-    types <- c("INT","TEXT","TEXT")
+    types <- c("INT","TEXT","TEXT","TEXT")
     createTbl(tbl,db,namelist,types)
   }
   

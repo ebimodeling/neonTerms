@@ -13,6 +13,7 @@ stripDupes <- function(input, tbl, db, field){
   dbC <- dbConnect(drv, dbname = db)
   q <- paste("SELECT",field,"FROM",tbl,sep=" ")
   out <- unlist(dbGetQuery(conn = dbC, q))
+  
   return(!input %in% out)
   #dindex <- sapply(input, function(x,y){ind <- grep(x,y);ifelse(length(ind) > 0, for(i in ind){ifelse(x == y[i],return(TRUE),return(FALSE))},return(FALSE))},y=out)
   

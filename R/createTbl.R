@@ -5,7 +5,7 @@
 #' @param namelist A named list of table headings
 #' @param types A list of types that each column should be, e.g. TEXT or INT
 #' 
-#' @example \dontrun{
+#' @examples \dontrun{
 #'  tbl <- "mytable"
 #'  db <- "test.db"
 #'  namelist <- c("id","desc")
@@ -23,6 +23,7 @@ createTbl <- function(tbl,db,namelist,types){
   cols <- paste(as.vector(rbind(namelist,types)),collapse=" ")
   fullq <- paste(pre,cols,")",sep="")
   dbSendQuery(conn = dbC, fullq)
+  
 }
 
 #' Test table
@@ -35,5 +36,6 @@ testTbl <- function(tbl,db){
   dbC <- dbConnect(drv, dbname=db)
   q1 <- paste("PRAGMA table_info(",tbl,")",sep="")
   tbltest <- dbGetQuery(conn = dbC, q1)
+  
   return(!is.null(tbltest))
 }
