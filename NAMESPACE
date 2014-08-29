@@ -2,6 +2,7 @@
 
 export(addDPD)
 export(addSpRes)
+export(addTDPL)
 export(addTblDef)
 export(addTblDesc)
 export(addTempRes)

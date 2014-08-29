@@ -22,7 +22,7 @@ addDPD <- function(df, db = NULL,overwrite = F, dcheck = T){
   #Check if the table exists
   
   if(!testTbl(tbl,db)){
-    types <- c("TEXT","TEXT","TEXT","TEXT","TEXT","TEXT")
+    types <- c("TEXT","TEXT","TEXT","TEXT","TEXT","INT")
     createTbl(tbl,db,namelist,types)
   }
   
