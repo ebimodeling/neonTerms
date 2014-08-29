@@ -1,6 +1,7 @@
 library(roxygen2)
 roxygenise(".")
 library(devtools)
+
 dev_mode()
 install(".")
 library(neonTerms)
@@ -68,14 +69,14 @@ q <- "SELECT TableDPLink.dpID, TableDefinition.termID, TableDefinition.tableID, 
 SpatialResolution.spatialRes,SpatialResolution.spatialDesc,TemporalResolution.timeRes,TemporalResolution.timeDesc
 FROM TableDPLink
 INNER JOIN TableDefinition
-ON TableDPLink.dpID = 'NEON.DOM.SIT.DP1.00003' AND TableDPLink.tableID = TableDefinition.tableID
+ON TableDPLink.dpID = 'NEON.DOM.SIT.DP0.10001' AND TableDPLink.tableID = TableDefinition.tableID
 INNER JOIN TermDefinition 
 ON TermDefinition.termID = TableDefinition.termID
 INNER JOIN SpatialResolution
 ON TableDPLink.dpID = SpatialResolution.dpID
 INNER JOIN TemporalResolution
 ON TableDPLink.dpID = TemporalResolution.dpID
-ORDER BY SpatialResolution.spatialRes,TemporalResolution.timeRes,TableDefinition.termID"
+ORDER BY TableDefinition.tableID,SpatialResolution.spatialRes,TemporalResolution.timeRes,TableDefinition.termID"
 out <- dbGetQuery(conn = dbC, q)
 
 ###Display unique ID for a given field

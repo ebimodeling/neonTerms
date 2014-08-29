@@ -1,0 +1,70 @@
+## `neonTerms`
+This is a package that will manage data about NEON's internal data product structures
+
+### Quick start
+
+
+```{r}
+#install.packages("devtools")
+#library(devtools)
+#install_github("NEONdps/neonTerms")
+library(neonTerms)
+library(RSQLite)
+options(stringsAsFactors = F)
+```
+
+
+
+### Create and set a database in options
+
+First thing you can do is create a database.  Setting it in options makes your life a bit easier.
+
+```{r}
+createDB("test.sqlite")
+db <- "test.sqlite"
+options(termDB = "test.sqlite")
+```
+
+
+### Load in data from csv's
+
+Next load data into CSV's
+
+```{r}
+
+dpd <- read.csv("testdata/dpd.csv")
+space <- read.csv("testdata/spatial.csv")
+temporal <- read.csv("testdata/temporal.csv")
+datapub <- read.csv("testdata/mam_datain_test.csv")
+genIS <- read.csv("testdata/genericIS_L1.csv")
+
+## Add rev numbers
+
+dpd$rev <- 1
+```
+
+Finally you can  add data to the the database.  We'll input the data publication workooks to create table definitions.
+```{r}
+addDPD(dpd)
+addTempRes(temporal)
+addSpRes(space)
+inputDataPub(datapub,db)
+inputDataPub(genIS,db)
+
+## I input a generic table, so we can make extra linkages by adding a new entry to the table description table
+toAdd <- data.frame(c("NEON.DOM.SIT.DP1.00002","NEON.DOM.SIT.DP1.00003"))
+toAdd <- cbind(c(3,3),toAdd)
+colnames(toAdd) <- c("tableID","dpID")
+addTDPL(toAdd)
+```
+
+
+### Retrieve data
+
+Data can be accessed via data product numbers,  Once data product numbers have been fully extracted you can easily generate a full suite of unique field numbers
+```{r}
+out <- qFull("NEON.DOM.SIT.DP1.00002",db)
+### Generate full numbers
+genFieldUID(out,db)
+```
+
