@@ -31,6 +31,7 @@ createTbl <- function(tbl,db,namelist,types){
 #' @param tbl the table name you want to check
 #' @param db the database to find the table in
 #' @return TRUE if exists, FALSE if not
+#' @export
 
 testTbl <- function(tbl,db){
   dbC <- dbConnect(drv, dbname=db)
