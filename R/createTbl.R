@@ -34,6 +34,7 @@ createTbl <- function(tbl,db,namelist,types){
 #' @export
 
 testTbl <- function(tbl,db){
+  drv <- dbDriver("SQLite")
   dbC <- dbConnect(drv, dbname=db)
   q1 <- paste("PRAGMA table_info(",tbl,")",sep="")
   tbltest <- dbGetQuery(conn = dbC, q1)
