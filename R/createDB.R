@@ -7,7 +7,12 @@
 #' @import RSQLite
 
 createDB <- function(path){
-  drv <- dbDriver("SQLite")
-  dbname <- path
-  dbC <- dbConnect(drv, dbname=dbname)
+  if (file.exists(path)){
+    print ('the database you are trying to create already exists,please choose a different name or delete that database and try again')
+  }
+  if (!file.exists(path)){
+    drv <- dbDriver("SQLite")
+    dbname <- path
+    dbC <- dbConnect(drv, dbname=dbname)
+  }
 }
