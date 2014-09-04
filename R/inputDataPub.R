@@ -4,11 +4,11 @@
 #' @import dplyr
 inputDataPub <- function(datapub,db){
   ### Create terms dataframe
-  tdfname <- c("fieldName","description","units")
+  tdfname <- c("fieldName","description")
   termDF <- datapub[,colnames(datapub)%in%tdfname]
   ## Strip out duplicates
   termDF <- termDF[!duplicated(termDF$fieldName),]
-  colnames(termDF) <- c("termName","termDefinition","units")
+  colnames(termDF) <- c("termName","termDefinition")
   addTermDef(termDF,db)
   
   
