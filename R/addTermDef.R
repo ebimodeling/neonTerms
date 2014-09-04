@@ -22,7 +22,7 @@ addTermDef <- function(df, db = NULL,overwrite = F, dcheck = T){
   #Check if the table exists
 
   if(!testTbl(tbl,db)){
-    types <- c("INT","TEXT","TEXT","TEXT")
+    types <- c("INT","TEXT","TEXT")
     createTbl(tbl,db,namelist,types)
   }
   
