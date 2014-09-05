@@ -38,18 +38,18 @@ addTDPL <- function(df, db = NULL,overwrite = F){
   dbC <- dbConnect(drv, dbname = db)
   out <- unlist(dbGetQuery(conn = dbC, q))
   ## Check against database
-  if(length(out)>0){
-  u <- unique(df$tableName)
-  for(i in 1:length(u) ){
-    if(u[i]%in%out){
-      q <- paste("SELECT tableNum","FROM",tbl," WHERE tableName = '",u,"'",sep=" ")
-      dbC <- dbConnect(drv, dbname = db)
-      intids <- unlist(dbGetQuery(conn = dbC, q))
-      upids <- tnum[which(df$tableName==u[i])]+max(intids)
-      tnum[which(df$tableName==u[i])] <- upids
-    }
-  }
-  }
+ # if(length(out)>0){
+#  u <- unique(df$dpID)
+ # for(i in 1:length(u) ){
+  #  if(u[i]%in%out){
+   #   q <- paste("SELECT tableNum","FROM",tbl," WHERE tableName = '",u,"'",sep=" ")
+   #   dbC <- dbConnect(drv, dbname = db)
+  #    intids <- unlist(dbGetQuery(conn = dbC, q))
+   #   upids <- tnum[which(df$tableName==u[i])]+max(intids)
+  #    tnum[which(df$tableName==u[i])] <- upids
+   # }
+  #}
+  #}
   
   df$tableNum <- tnum
   

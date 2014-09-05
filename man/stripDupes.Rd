@@ -15,7 +15,7 @@ stripDupes(input, tbl, db, field)
 \item{the}{field in the table}
 }
 \value{
-a vector of true and false indicating which rows of potential input should be added to the database
+a vector of true and false indicating which rows of potential input should be added to the database (FALSE is already in the db)
 }
 \description{
 strip duplicates from potential database inputs
