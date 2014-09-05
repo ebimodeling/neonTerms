@@ -8,7 +8,7 @@ qFull <- function(dpID,db) {
 dbC <- dbConnect(drv, dbname = db)
 
 
-q <- paste("SELECT TableDPLink.dpID, TableDefinition.termID, TableDefinition.tableID, TermDefinition.termName,
+q <- paste("SELECT TableDPLink.dpID, TableDefinition.rowid, TableDefinition.termID, TableDefinition.tableID, TermDefinition.termName,
 SpatialResolution.spatialRes,SpatialResolution.spatialDesc,TemporalResolution.timeRes,TemporalResolution.timeDesc
 FROM TableDPLink
 INNER JOIN TableDefinition
@@ -19,7 +19,7 @@ INNER JOIN SpatialResolution
 ON TableDPLink.dpID = SpatialResolution.dpID
 INNER JOIN TemporalResolution
 ON TableDPLink.dpID = TemporalResolution.dpID
-ORDER BY TableDefinition.tableID,SpatialResolution.spatialRes,TemporalResolution.timeRes,TableDefinition.termID",sep = "")
+ORDER BY TableDefinition.tableID,SpatialResolution.spatialRes,TemporalResolution.timeRes,TableDefinition.rowid",sep = "")
 out <- dbGetQuery(conn = dbC, q)
 
 return(out)
