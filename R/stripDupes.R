@@ -4,7 +4,7 @@
 #' @param tbl the table to check for duplicates in.
 #' @param db the database name
 #' @param the field in the table
-#' @return a vector of true and false indicating which rows of potential input should be added to the database
+#' @return a vector of true and false indicating which rows of potential input should be added to the database (FALSE is already in the db)
 #' @export
 
 stripDupes <- function(input, tbl, db, field){
