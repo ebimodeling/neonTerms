@@ -27,7 +27,7 @@ addDPD <- function(df, db = NULL,overwrite = F, dcheck = T){
   }
   
   ### Add ID's
-  if(dcheck){
+  if(dcheck && overwrite == F){
     
     df <- df[stripDupes(df$dpID,tbl,db,"dpID"),]
 }

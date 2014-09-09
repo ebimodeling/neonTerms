@@ -27,15 +27,14 @@ addTermDef <- function(df, db = NULL,overwrite = F, dcheck = T){
   }
   
   ### Add ID's
-  if(dcheck){
+  if(dcheck && overwrite == FALSE){
     
     df <- df[stripDupes(df$termName,tbl,db,"termName"),]
+  } 
+  
     termID <- createID(dim(df)[1],tbl,db)
     df <- cbind(termID,df)
-  } else {
-    termID <- createID(dim(df)[1],tbl,db)
-    df <- cbind(termID,df)
-  }
+
   writeTable(df,tbl,namelist,db,overwrite)
   print(paste("Successfully wrote ",dim(df)[1]," rows to the ",tbl," table in your database ",db,sep="" ))
   
