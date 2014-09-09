@@ -1,4 +1,4 @@
-#' add to spatial resolution
+#' add to temporal resolution
 #' @description This will add to a table of spatial resolutions
 #' @param df a dataframe that adheres to the standard of a spatial resolution table
 #' @param db The database to add terms to.  Alternatively you can set this as an option termDB with options(termDB = "myDB.sqlite") and leave the this parameter out
@@ -8,10 +8,10 @@
 #' @export
 #' @import RSQLite
 
-addSpRes <- function(df, db = NULL,overwrite = F){
-  tbl <- "SpatialResolution"
+addTempInd <- function(df, db = NULL,overwrite = F){
+  tbl <- "TemporalIndex"
   drv <- dbDriver("SQLite")
-  namelist <- c("spatialID","dpID","spatialRes","spatialDesc")
+  namelist <- c("tmpID","dpID","timeInd","timeDesc")
   if(is.null(db)){
     db <- getOption("termDB")
     if(is.null(db)){stop("You must specify a database. This can be done in the function call or with options(termDB = 'myDB.sqlite')")}
@@ -23,13 +23,12 @@ addSpRes <- function(df, db = NULL,overwrite = F){
     types <- c("INT","TEXT","INT","TEXT")
     createTbl(tbl,db,namelist,types)
   }
-
-    spatialID <- createID(dim(df)[1],tbl,db)
-    df <- cbind(spatialID,df)
+  
+  tmpID <- createID(dim(df)[1],tbl,db)
+  df <- cbind(tmpID,df)
   
   writeTable(df,tbl,namelist,db,overwrite)
   print(paste("Successfully wrote ",dim(df)[1]," rows to the ",tbl," table in your database ",db,sep="" ))
   
   
 }
-
