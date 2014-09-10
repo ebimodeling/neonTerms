@@ -18,13 +18,13 @@ extractTables <- function(tab) {
     temporal[i,3] <- tab[which(tab$sampleFrequency==unique(tab$sampleFrequency))[i],
                          "sampleFrequency"]
   }
-  colnames(temporal) <- c("dpID","timeRes","timeDesc")
+  colnames(temporal) <- c("dpID","timeInd","timeDesc")
   
   # TEMPORARY SOLUTION FOR OS DATA ONLY: auto-populate spatial index as 001 for all L1s, PLT for all L0s
   space <- tab[1,c("DPNumber","DPName","Dpdescription")]
   space[,2] <- ifelse(substr(tab$DPNumber[1],17,17)==0, "PLT", 1)
   space[,3] <- ifelse(substr(tab$DPNumber[1],17,17)==0, "Plot", "Variable")
-  colnames(space) <- c("dpID","spatialRes","spatialDesc")
+  colnames(space) <- c("dpID","spatialInd","spatialDesc")
   
   return(list(dpd, temporal, space))
 }
