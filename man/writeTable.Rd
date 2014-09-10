@@ -15,8 +15,6 @@ writeTable(df, tbl, namelist, db, overwrite)
 \item{db}{The database to add terms to.  Alternatively you can set this as an option termDB with options(termDB = "myDB.sqlite") and leave the this parameter out}
 
 \item{overwrite}{If T, overwrite the underlying table.  This may be a very bad idea.  So be careful!}
-
-\item{append}{if T, no duplicate checking is done!  This may be a bad idea!}
 }
 \description{
 This is a generic fxn to write to tables.

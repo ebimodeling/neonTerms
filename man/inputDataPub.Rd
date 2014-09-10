@@ -3,7 +3,14 @@
 \alias{inputDataPub}
 \title{input a data publication workbook into the db}
 \usage{
-inputDataPub(datapub, db)
+inputDataPub(datapub, mapping, db = NULL)
+}
+\arguments{
+\item{datapub}{the dataframe to input that has all the necessary fields}
+
+\item{mapping}{a list with valid mappings of field names in the datapub to field names in the database}
+
+\item{db}{the database to add to.  If NULL, looks for it in the options}
 }
 \description{
 Based on a standard template, input a data publication workbook

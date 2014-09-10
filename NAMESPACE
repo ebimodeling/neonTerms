@@ -2,11 +2,11 @@
 
 export(addBuff)
 export(addDPD)
-export(addSpRes)
+export(addSpInd)
 export(addTDPL)
 export(addTblDef)
 export(addTblDesc)
-export(addTempRes)
+export(addTempInd)
 export(addTermDef)
 export(checkNames)
 export(createDB)
