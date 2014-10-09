@@ -1,5 +1,5 @@
 #' add to spatial resolution
-#' @description This will add to a table of spatial resolutions
+#' @description This will add to a table of horizontal spatial resolutions for IS
 #' @param df a dataframe that adheres to the standard of a spatial resolution table
 #' @param db The database to add terms to.  Alternatively you can set this as an option termDB with options(termDB = "myDB.sqlite") and leave the this parameter out
 #' @param overwrite If TRUE, overwrite the underlying table.  This may be a very bad idea.  So be careful!
@@ -8,10 +8,10 @@
 #' @export
 #' @import RSQLite
 
-addSpInd2 <- function(df, db = NULL,overwrite = F){
-  tbl <- "SpatialIndex2"
+addSpIndHor <- function(df, db = NULL,overwrite = F){
+  tbl <- "HorizontalIndex"
   drv <- dbDriver("SQLite")
-  namelist <- c("spatialID","dpID","spatialInd","spatialDesc")
+  namelist <- c("spatialID","dpID","horInd","horDesc")
   if(is.null(db)){
     db <- getOption("termDB")
     if(is.null(db)){stop("You must specify a database. This can be done in the function call or with options(termDB = 'myDB.sqlite')")}
