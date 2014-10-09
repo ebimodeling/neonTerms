@@ -12,10 +12,10 @@ extractTables <- function(tab) {
   num.times <- length(unique(tab$sampleFrequency))
   temporal <- data.frame(matrix(data=NA,ncol=3,nrow=num.times))
   for(i in 1:num.times) {
-    temporal[i,1] <- tab[which(tab$sampleFrequency==unique(tab$sampleFrequency))[i],
+    temporal[i,1] <- tab[which(tab$sampleFrequency==unique(tab$sampleFrequency)[i])[1],
                          "DPNumber"]
     temporal[i,2] <- i
-    temporal[i,3] <- tab[which(tab$sampleFrequency==unique(tab$sampleFrequency))[i],
+    temporal[i,3] <- tab[which(tab$sampleFrequency==unique(tab$sampleFrequency)[i])[1],
                          "sampleFrequency"]
   }
   colnames(temporal) <- c("dpID","timeInd","timeDesc")
