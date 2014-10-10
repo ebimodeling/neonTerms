@@ -4,8 +4,12 @@
 \title{get full query}
 \usage{
 qFull(dpID, db)
+
+qFull(dpID, db)
 }
 \description{
+get full query
+
 get full query
 }
 
