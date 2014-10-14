@@ -33,19 +33,24 @@ inputDataPub <- function(datapub,db){
   colnames(tlinkDF) <- c("tableID","dpID")
   addTDPL(tlinkDF)
   
-  
+  ### Add to the units table
+  unitsDF <- datapub[,c("units","dataType")]
+  colnames(unitsDF) <- c("unitsDesc","dataType")
+  unitsDF <- unitsDF[!duplicated(unitsDF$unitsDesc),]
+  addUnitsTbl(unitsDF,db)
   
   
   ### Now the hard part!  Let's add to the table definition table
   ### First we'll grab our term ID's
 
   termID <- unlist(sapply(datapub$fieldName,function(x){q <-paste("SELECT termID FROM TermDefinition WHERE termName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  unitsID <- unlist(sapply(datapub$units,function(x){q <-paste("SELECT unitsID FROM UnitsTable WHERE unitsDesc = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
   tableID <- unlist(sapply(datapub$table,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
   ## Add column ID's
   datapub <- datapub %.% group_by(table) %.% mutate(columnID = 1:length(table))
   
-  tabledefDF <- as.data.frame(cbind(unname(termID),unname(tableID),datapub$columnID))  
-  colnames(tabledefDF) <- c("termID","tableID","columnID")
+  tabledefDF <- as.data.frame(cbind(unname(termID),unname(unitsID),unname(tableID),datapub$columnID))  
+  colnames(tabledefDF) <- c("termID","unitsID","tableID","columnID")
   addTblDef(tabledefDF,db)
   
 }
