@@ -34,9 +34,10 @@ inputDataPub <- function(datapub,db){
   addTDPL(tlinkDF)
   
   ### Add to the units table
-  unitsDF <- datapub[,c("units","dataType")]
-  colnames(unitsDF) <- c("unitsDesc","dataType")
-  unitsDF <- unitsDF[!duplicated(unitsDF$unitsDesc),]
+  unitsDF <- data.frame(datapub[,c("units")])
+  colnames(unitsDF) <- c("unitsDesc")
+  unitsDF <- data.frame(unitsDF[!duplicated(unitsDF$unitsDesc),])
+  colnames(unitsDF) <- c("unitsDesc")
   addUnitsTbl(unitsDF,db)
   
   

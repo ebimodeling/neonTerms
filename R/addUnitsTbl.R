@@ -11,7 +11,7 @@
 addUnitsTbl <- function(df, db=NULL, overwrite=F, dcheck=T){
   tbl <- "UnitsTable"
   drv <- dbDriver("SQLite")
-  namelist <- c("unitsID","unitsDesc","dataType")
+  namelist <- c("unitsID","unitsDesc")
   if(is.null(db)){
     db <- getOption("termDB")
     if(is.null(db)){stop("You must specify a database. This can be done in the function call or with options(termDB = 'myDB.sqlite')")}
@@ -19,17 +19,18 @@ addUnitsTbl <- function(df, db=NULL, overwrite=F, dcheck=T){
   
   #Check if the table exists
   if(!testTbl(tbl,db)){
-    types <- c("INT","TEXT","TEXT")
+    types <- c("INT","TEXT")
     createTbl(tbl,db,namelist,types)
   }
   
   #Check for duplicates
   if(dcheck && overwrite == FALSE){
-    df <- df[stripDupes(df$units,tbl,db,"unitsDesc"),]
+    df <- data.frame(df[stripDupes(df$unitsDesc,tbl,db,"unitsDesc"),])
   } 
   
   unitsID <- createID(dim(df)[1],tbl,db)
   df <- cbind(unitsID,df)
+  colnames(df) <- c("unitsID","unitsDesc")
   
   writeTable(df,tbl,namelist,db,overwrite)
   print(paste("Successfully wrote ",dim(df)[1]," rows to the ",tbl," table in your database ",db,sep="" ))
