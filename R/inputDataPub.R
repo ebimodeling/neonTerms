@@ -45,7 +45,14 @@ inputDataPub <- function(datapub,db){
   ### First we'll grab our term ID's
 
   termID <- unlist(sapply(datapub$fieldName,function(x){q <-paste("SELECT termID FROM TermDefinition WHERE termName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
-  unitsID <- unlist(sapply(datapub$units,function(x){q <-paste("SELECT unitsID FROM UnitsTable WHERE unitsDesc = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  unitsID <- unlist(sapply(datapub$units,function(x){
+    if(is.na(x)) {
+      q <-paste("SELECT unitsID FROM UnitsTable WHERE unitsDesc IS NULL",sep="")
+    } else {
+    q <-paste("SELECT unitsID FROM UnitsTable WHERE unitsDesc = ", "'",x,"'",sep="")
+    }
+    return(dbGetQuery(conn = dbC, q))
+    }))
   tableID <- unlist(sapply(datapub$table,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
   ## Add column ID's
   datapub <- datapub %.% group_by(table) %.% mutate(columnID = 1:length(table))
