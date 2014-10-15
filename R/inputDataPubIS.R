@@ -27,11 +27,6 @@ inputDataPubIS <- function(datapub,db){
   dbC <- dbConnect(drv, dbname=db)
   
   tlinkname <- c("table","DPNumber") 
-  #tabletemp <- vector("numeric", nrow(datapub))
-  #for(i in 1:length(which(!duplicated(datapub$DPName)))) {
-  #  tabletemp[which(datapub$DPName==unique(datapub$DPName)[i])] <- 
-  #    rep(i, length(which(datapub$DPName==unique(datapub$DPName)[i])))
-  #}
   tlinkDF <- datapub[,c("DPName","DPNumber")]
   colnames(tlinkDF) <- tlinkname
   
@@ -41,6 +36,12 @@ inputDataPubIS <- function(datapub,db){
   colnames(tlinkDF) <- c("tableID","dpID")
   addTDPL(tlinkDF)
   
+  ### Add to the units table
+  unitsDF <- data.frame(datapub[,c("units")])
+  colnames(unitsDF) <- c("unitsDesc")
+  unitsDF <- data.frame(unitsDF[!duplicated(unitsDF$unitsDesc),])
+  colnames(unitsDF) <- c("unitsDesc")
+  addUnitsTbl(unitsDF,db)
   
   
   
@@ -48,12 +49,20 @@ inputDataPubIS <- function(datapub,db){
   ### First we'll grab our term ID's
 
   termID <- unlist(sapply(datapub$fieldName,function(x){q <-paste("SELECT termID FROM TermDefinition WHERE termName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  unitsID <- unlist(sapply(datapub$units,function(x){
+    if(is.na(x)) {
+      q <-paste("SELECT unitsID FROM UnitsTable WHERE unitsDesc IS NULL",sep="")
+    } else {
+      q <-paste("SELECT unitsID FROM UnitsTable WHERE unitsDesc = ", "'",x,"'",sep="")
+    }
+    return(dbGetQuery(conn = dbC, q))
+  }))
   tableID <- unlist(sapply(datapub$DPName,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
   ## Add column ID's
   datapub <- datapub %.% group_by(DPName) %.% mutate(columnID = 1:length(DPName))
   
-  tabledefDF <- as.data.frame(cbind(unname(termID),unname(tableID),datapub$columnID))  
-  colnames(tabledefDF) <- c("termID","tableID","columnID")
+  tabledefDF <- as.data.frame(cbind(unname(termID),unname(unitsID),unname(tableID),datapub$columnID))  
+  colnames(tabledefDF) <- c("termID","unitsID","tableID","columnID")
   addTblDef(tabledefDF,db)
   
 }
