@@ -43,6 +43,12 @@ inputDataPubIS <- function(datapub,db){
   colnames(unitsDF) <- c("unitsDesc")
   addUnitsTbl(unitsDF,db)
   
+  ### Add to the data type table
+  datatypeDF <- data.frame(datapub[,c("dataType")])
+  colnames(datatypeDF) <- c("dataType")
+  datatypeDF <- data.frame(datatypeDF[!duplicated(datatypeDF$dataType),])
+  colnames(datatypeDF) <- c("dataType")
+  addDTTbl(datatypeDF,db)
   
   
   ### Now the hard part!  Let's add to the table definition table
@@ -57,12 +63,20 @@ inputDataPubIS <- function(datapub,db){
     }
     return(dbGetQuery(conn = dbC, q))
   }))
+  dataTypeID <- unlist(sapply(datapub$dataType,function(x){
+    if(is.na(x)) {
+      q <-paste("SELECT dataTypeID FROM DataTypeTable WHERE dataTypeDesc IS NULL",sep="")
+    } else {
+      q <-paste("SELECT dataTypeID FROM DataTypeTable WHERE dataTypeDesc = ", "'",x,"'",sep="")
+    }
+    return(dbGetQuery(conn = dbC, q))
+  }))
   tableID <- unlist(sapply(datapub$DPName,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
   ## Add column ID's
   datapub <- datapub %.% group_by(DPName) %.% mutate(columnID = 1:length(DPName))
   
-  tabledefDF <- as.data.frame(cbind(unname(termID),unname(unitsID),unname(tableID),datapub$columnID))  
-  colnames(tabledefDF) <- c("termID","unitsID","tableID","columnID")
+  tabledefDF <- as.data.frame(cbind(unname(termID),unname(unitsID),unname(dataTypeID),unname(tableID),datapub$columnID))  
+  colnames(tabledefDF) <- c("termID","unitsID","dataTypeID","tableID","columnID")
   addTblDef(tabledefDF,db)
   
 }
