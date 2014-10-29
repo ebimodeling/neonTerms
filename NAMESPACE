@@ -2,6 +2,7 @@
 
 export(addBuff)
 export(addDPD)
+export(addDTTbl)
 export(addSpInd)
 export(addSpIndHor)
 export(addSpIndVer)

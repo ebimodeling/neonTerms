@@ -4,16 +4,16 @@
 
 
 extractTablesIS <- function(tab) {
-  dpd <- tab[1,c("DPNumber","DPName","Dpdescription","DPNumber","Protocol.C3")]
-  dpd[,4] <- substr(tab$DPNumber[1],17,17)
-  colnames(dpd) <- c("dpID","name","description","level","specDoc")
+  dpd <- tab[1,c("dpID","DPName","DPDescription","dpID")]
+  dpd[,4] <- substr(tab$dpID[1],17,17)
+  colnames(dpd) <- c("dpID","name","description","level")
   dpd$rev <- 1
   
   num.times <- length(unique(tab$timeIndex))
   temporal <- data.frame(matrix(data=NA,ncol=3,nrow=num.times))
   for(i in 1:num.times) {
     temporal[i,1] <- tab[which(tab$timeIndex==unique(tab$timeIndex)[i])[1],
-                         "DPNumber"]
+                         "dpID"]
     temporal[i,2] <- tab[which(tab$timeIndex==unique(tab$timeIndex)[i])[1],
                          "timeIndex"]
     temporal[i,3] <- tab[which(tab$timeIndex==unique(tab$timeIndex)[i])[1],
@@ -25,7 +25,7 @@ extractTablesIS <- function(tab) {
   horizontal <- data.frame(matrix(data=NA,ncol=3,nrow=num.hor))
   for(i in 1:num.hor) {
     horizontal[i,1] <- tab[which(tab$horIndex==unique(tab$horIndex)[i])[1],
-                         "DPNumber"]
+                         "dpID"]
     horizontal[i,2] <- tab[which(tab$horIndex==unique(tab$horIndex)[i])[1],
                          "horIndex"]
     horizontal[i,3] <- tab[which(tab$horIndex==unique(tab$horIndex)[i])[1],
@@ -37,7 +37,7 @@ extractTablesIS <- function(tab) {
   vertical <- data.frame(matrix(data=NA,ncol=3,nrow=num.vert))
   for(i in 1:num.vert) {
     vertical[i,1] <- tab[which(tab$vertIndex==unique(tab$vertIndex)[i])[1],
-                           "DPNumber"]
+                           "dpID"]
     vertical[i,2] <- tab[which(tab$vertIndex==unique(tab$vertIndex)[i])[1],
                            "vertIndex"]
     vertical[i,3] <- tab[which(tab$vertIndex==unique(tab$vertIndex)[i])[1],
