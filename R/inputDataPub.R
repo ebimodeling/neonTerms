@@ -24,7 +24,7 @@ inputDataPub <- function(datapub,db){
   drv <- dbDriver("SQLite")
   dbC <- dbConnect(drv, dbname=db)
   
-  tlinkname <- c("table","DPNumber") 
+  tlinkname <- c("table","dpID") 
   tlinkDF <- datapub[,colnames(datapub)%in%tlinkname]
   
   tlinkDF <- tlinkDF[!duplicated(tlinkDF$table),]

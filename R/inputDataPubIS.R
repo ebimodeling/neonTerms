@@ -15,7 +15,7 @@ inputDataPubIS <- function(datapub,db){
   ### Add to the table description - NO TABLES in IS, but still need table info to 
   ### join properly - define one table per IS product
   tbdfname <- c("table","tableDescription")
-  tabledescDF <- datapub[,c("DPName","Dpdescription")]
+  tabledescDF <- datapub[,c("DPName","DPDescription")]
   ### the order is important and must match the expectation of the table, this 
   ### mapping will have to change if the spreadsheet input changes
   colnames(tabledescDF) <- c("tableName","tableDesc")
@@ -26,8 +26,8 @@ inputDataPubIS <- function(datapub,db){
   drv <- dbDriver("SQLite")
   dbC <- dbConnect(drv, dbname=db)
   
-  tlinkname <- c("table","DPNumber") 
-  tlinkDF <- datapub[,c("DPName","DPNumber")]
+  tlinkname <- c("table","dpID") 
+  tlinkDF <- datapub[,c("DPName","dpID")]
   colnames(tlinkDF) <- tlinkname
   
   tlinkDF <- tlinkDF[!duplicated(tlinkDF$table),]
