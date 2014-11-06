@@ -11,10 +11,10 @@ dbC <- dbConnect(drv, dbname = db)
 q <- paste("SELECT TableDPLink.dpID, TableDefinition.rowid, TableDefinition.termID, 
 TableDefinition.tableID, TermDefinition.termName,HorizontalIndex.horInd,
 HorizontalIndex.horDesc,VerticalIndex.verInd,VerticalIndex.verDesc,
-TemporalIndex.timeInd,TemporalIndex.timeDesc
-FROM TableDPLink
-INNER JOIN TableDefinition
-ON TableDPLink.dpID = '",dpID,"' AND TableDPLink.tableID = TableDefinition.tableID
+TemporalIndex.timeInd,TemporalIndex.timeDesc,TableDPLink.tableNum
+FROM TableDefinition
+INNER JOIN TableDPLink
+ON TableDPLink.dpID = '",dpID,"' AND TableDefinition.tableID = TableDPLink.tableID
 INNER JOIN TermDefinition 
 ON TermDefinition.termID = TableDefinition.termID
 INNER JOIN HorizontalIndex
