@@ -3,7 +3,7 @@
 \alias{inputDataPubIS}
 \title{input an *IS data publication workbook into the db}
 \usage{
-inputDataPubIS(datapub, db)
+inputDataPubIS(datapub, temporal, horizontal, vertical, db)
 }
 \description{
 Based on a standard template, input a data publication workbook

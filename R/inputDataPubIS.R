@@ -82,12 +82,16 @@ inputDataPubIS <- function(datapub,temporal,horizontal,vertical,db){
     return(dbGetQuery(conn = dbC, q))
   }))
   tableID <- unlist(sapply(datapub$tableName,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
-  
+  dpIDtmp <- datapub$dpID[1]
+  tempID <- unlist(sapply(datapub$timeDescription,function(x){q <-paste("SELECT tmpID FROM TemporalIndex WHERE dpID = ", "'",dpIDtmp,"'", "AND timeDesc = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  horID <- unlist(sapply(datapub$horDescription,function(x){q <-paste("SELECT spatialID FROM HorizontalIndex WHERE dpID = ", "'",dpIDtmp,"'", "AND horDesc = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  verID <- unlist(sapply(datapub$vertDescription,function(x){q <-paste("SELECT spatialID FROM VerticalIndex WHERE dpID = ", "'",dpIDtmp,"'", "AND verDesc = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  spaceID <- NA
   ## Add column ID's
   datapub <- datapub %.% group_by(tableName) %.% mutate(columnID = 1:length(tableName))
   
-  tabledefDF <- as.data.frame(cbind(unname(termID),unname(unitsID),unname(dataTypeID),unname(tableID),datapub$columnID))  
-  colnames(tabledefDF) <- c("termID","unitsID","dataTypeID","tableID","columnID")
+  tabledefDF <- as.data.frame(cbind(unname(termID),unname(unitsID),unname(dataTypeID),unname(tempID),unname(horID),unname(verID),spaceID,unname(tableID),datapub$columnID))  
+  colnames(tabledefDF) <- c("termID","unitsID","dataTypeID","tempID","horID","verID","spaceID","tableID","columnID")
   addTblDef(tabledefDF,db)
   
 

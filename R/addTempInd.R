@@ -11,7 +11,7 @@
 addTempInd <- function(df, db = NULL,overwrite = F){
   tbl <- "TemporalIndex"
   drv <- dbDriver("SQLite")
-  namelist <- c("tmpID","dpID","timeInd","timeDesc","tableID")
+  namelist <- c("tmpID","dpID","timeInd","timeDesc")
   if(is.null(db)){
     db <- getOption("termDB")
     if(is.null(db)){stop("You must specify a database. This can be done in the function call or with options(termDB = 'myDB.sqlite')")}
@@ -20,7 +20,7 @@ addTempInd <- function(df, db = NULL,overwrite = F){
   #Check if the table exists
   
   if(!testTbl(tbl,db)){
-    types <- c("INT","TEXT","INT","TEXT","INT")
+    types <- c("INT","TEXT","INT","TEXT")
     createTbl(tbl,db,namelist,types)
   }
   

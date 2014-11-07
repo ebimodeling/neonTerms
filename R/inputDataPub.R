@@ -48,6 +48,9 @@ inputDataPub <- function(datapub,temporal,space,db){
   colnames(datatypeDF) <- c("dataType")
   addDTTbl(datatypeDF,db)
   
+  ## Add to the spatial and temporal tables
+  addTempInd(temporal)
+  addSpInd(space)
   
   ### Now the hard part!  Let's add to the table definition table
   ### First we'll grab our term ID's
@@ -70,23 +73,17 @@ inputDataPub <- function(datapub,temporal,space,db){
     return(dbGetQuery(conn = dbC, q))
   }))
   tableID <- unlist(sapply(datapub$table,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  dpIDtmp <- datapub$dpID[1]
+  tempID <- unlist(sapply(datapub$timeDescription,function(x){q <-paste("SELECT tmpID FROM TemporalIndex WHERE dpID = ", "'",dpIDtmp,"'", "AND timeDesc = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  spaceID <- unlist(sapply(datapub$spatialDescription,function(x){q <-paste("SELECT spatialID FROM SpatialIndex WHERE dpID = ", "'",dpIDtmp,"'", "AND spatialDesc = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  horID <- NA
+  verID <- NA
   ## Add column ID's
   datapub <- datapub %.% group_by(table) %.% mutate(columnID = 1:length(table))
   
-  tabledefDF <- as.data.frame(cbind(unname(termID),unname(unitsID),unname(dataTypeID),unname(tableID),datapub$columnID))  
-  colnames(tabledefDF) <- c("termID","unitsID","dataTypeID","tableID","columnID")
+  tabledefDF <- as.data.frame(cbind(unname(termID),unname(unitsID),unname(dataTypeID),unname(tempID),horID,verID,unname(spaceID),unname(tableID),datapub$columnID))  
+  colnames(tabledefDF) <- c("termID","unitsID","dataTypeID","tempID","horID","verID","spaceID","tableID","columnID")
   addTblDef(tabledefDF,db)
   
-  ## Add to the temporal index table
-  temporalTableID <- unlist(sapply(temporal$tableName,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
-  temporal$tableName <- temporalTableID
-  colnames(temporal)[4] <- "tableID"
-  addTempInd(temporal)
-  
-  ## Add to the spatial index table
-  spaceTableID <- unlist(sapply(space$tableName,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
-  space$tableName <- spaceTableID
-  colnames(space)[4] <- "tableID"
-  addSpInd(space)
   
 }

@@ -8,17 +8,9 @@ extractTablesIS <- function(tab) {
   dpd[,4] <- substr(tab$dpID[1],17,17)
   colnames(dpd) <- c("dpID","name","description","level")
   dpd$rev <- 1
-  
-  # get table names for each row
-  tabletemp <- datapub[,c("horIndex","vertIndex","timeIndex")]
-  tabledescDF <- data.frame(cbind(paste("TAB", tabletemp$horIndex, tabletemp$vertIndex, 
-                                        tabletemp$timeIndex, sep=""),
-                                  paste("HOR", tabletemp$horIndex, ".VER", tabletemp$vertIndex, 
-                                        ".TMI", tabletemp$timeIndex, sep="")))
-  colnames(tabledescDF) <- c("tableName","tableDesc")
-  
+    
   num.times <- length(unique(tab$timeIndex))
-  temporal <- data.frame(matrix(data=NA,ncol=4,nrow=num.times))
+  temporal <- data.frame(matrix(data=NA,ncol=3,nrow=num.times))
   for(i in 1:num.times) {
     temporal[i,1] <- tab[which(tab$timeIndex==unique(tab$timeIndex)[i])[1],
                          "dpID"]
@@ -26,10 +18,8 @@ extractTablesIS <- function(tab) {
                          "timeIndex"]
     temporal[i,3] <- tab[which(tab$timeIndex==unique(tab$timeIndex)[i])[1],
                          "timeDescription"]
-    temporal[i,4] <- tabledescDF[which(tab$timeIndex==unique(tab$timeIndex)[i])[1],
-                                 "tableName"]
   }
-  colnames(temporal) <- c("dpID","timeInd","timeDesc","tableName")
+  colnames(temporal) <- c("dpID","timeInd","timeDesc")
   
   num.hor <- length(unique(tab$horIndex))
   horizontal <- data.frame(matrix(data=NA,ncol=3,nrow=num.hor))
@@ -40,10 +30,8 @@ extractTablesIS <- function(tab) {
                          "horIndex"]
     horizontal[i,3] <- tab[which(tab$horIndex==unique(tab$horIndex)[i])[1],
                          "horDescription"]
-    horizontal[i,4] <- tabledescDF[which(tab$horIndex==unique(tab$horIndex)[i])[1],
-                           "tableName"]
   }
-  colnames(horizontal) <- c("dpID","horInd","horDesc","tableName")
+  colnames(horizontal) <- c("dpID","horInd","horDesc")
 
   num.vert <- length(unique(tab$vertIndex))
   vertical <- data.frame(matrix(data=NA,ncol=3,nrow=num.vert))
@@ -54,10 +42,8 @@ extractTablesIS <- function(tab) {
                            "vertIndex"]
     vertical[i,3] <- tab[which(tab$vertIndex==unique(tab$vertIndex)[i])[1],
                            "vertDescription"]
-    vertical[i,4] <- tabledescDF[which(tab$vertIndex==unique(tab$vertIndex)[i])[1],
-                         "tableName"]
   }
-  colnames(vertical) <- c("dpID","verInd","verDesc","tableName")
+  colnames(vertical) <- c("dpID","verInd","verDesc")
   
   return(list(dpd, temporal, horizontal, vertical))
 }

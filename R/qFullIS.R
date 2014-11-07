@@ -18,11 +18,11 @@ ON TableDPLink.dpID = '",dpID,"' AND TableDefinition.tableID = TableDPLink.table
 INNER JOIN TermDefinition 
 ON TermDefinition.termID = TableDefinition.termID
 INNER JOIN HorizontalIndex
-ON TableDPLink.dpID = HorizontalIndex.dpID AND TableDefinition.tableID = HorizontalIndex.tableID
+ON TableDPLink.dpID = HorizontalIndex.dpID AND TableDefinition.horID = HorizontalIndex.spatialID
 INNER JOIN VerticalIndex
-ON TableDPLink.dpID = VerticalIndex.dpID AND TableDefinition.tableID = VerticalIndex.tableID
+ON TableDPLink.dpID = VerticalIndex.dpID AND TableDefinition.verID = VerticalIndex.spatialID
 INNER JOIN TemporalIndex
-ON TableDPLink.dpID = TemporalIndex.dpID AND TableDefinition.tableID = TemporalIndex.tableID
+ON TableDPLink.dpID = TemporalIndex.dpID AND TableDefinition.tempID = TemporalIndex.tmpID
 ORDER BY TableDefinition.tableID,HorizontalIndex.horInd,VerticalIndex.verInd,TemporalIndex.timeInd,TableDefinition.rowid",sep = "")
 out <- dbGetQuery(conn = dbC, q)
 
