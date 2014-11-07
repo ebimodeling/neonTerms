@@ -2,7 +2,11 @@
 This is a package that will manage data about NEON's internal data product structures
 
 This readme and its instructions are out of date. Until I get around to updating it, use the scripts in DB_generation_commands.R and DP_number_generation_commands.R
+
 And if you make a "new" database, always use the term definition table from the old database! Always!
+
+The current version of the database is november.sqlite
+
 
 
 ### Quick start
