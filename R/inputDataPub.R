@@ -2,7 +2,7 @@
 #' @description Based on a standard template, input a data publication workbook
 #' @export
 #' @import dplyr
-inputDataPub <- function(datapub,db){
+inputDataPub <- function(datapub,temporal,space,db){
   ### Create terms dataframe
   tdfname <- c("fieldName","description")
   termDF <- datapub[,colnames(datapub)%in%tdfname]
@@ -76,5 +76,17 @@ inputDataPub <- function(datapub,db){
   tabledefDF <- as.data.frame(cbind(unname(termID),unname(unitsID),unname(dataTypeID),unname(tableID),datapub$columnID))  
   colnames(tabledefDF) <- c("termID","unitsID","dataTypeID","tableID","columnID")
   addTblDef(tabledefDF,db)
+  
+  ## Add to the temporal index table
+  temporalTableID <- unlist(sapply(temporal$tableName,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  temporal$tableName <- temporalTableID
+  colnames(temporal)[4] <- "tableID"
+  addTempInd(temporal)
+  
+  ## Add to the spatial index table
+  spaceTableID <- unlist(sapply(space$tableName,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  space$tableName <- spaceTableID
+  colnames(space)[4] <- "tableID"
+  addSpInd(space)
   
 }

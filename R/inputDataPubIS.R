@@ -2,7 +2,7 @@
 #' @description Based on a standard template, input a data publication workbook
 #' @export
 #' @import dplyr
-inputDataPubIS <- function(datapub,db){
+inputDataPubIS <- function(datapub,temporal,horizontal,vertical,db){
   ### Create terms dataframe
   tdfname <- c("fieldName","description")
   termDF <- datapub[,colnames(datapub)%in%tdfname]
@@ -56,6 +56,10 @@ inputDataPubIS <- function(datapub,db){
   colnames(datatypeDF) <- c("dataType")
   addDTTbl(datatypeDF,db)
   
+  ## Add to the spatial and temporal tables
+  addTempInd(temporal)
+  addSpIndHor(horizontal)
+  addSpIndVer(vertical)
   
   ### Now the hard part!  Let's add to the table definition table
   ### First we'll grab our term ID's
@@ -78,6 +82,7 @@ inputDataPubIS <- function(datapub,db){
     return(dbGetQuery(conn = dbC, q))
   }))
   tableID <- unlist(sapply(datapub$tableName,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
+  
   ## Add column ID's
   datapub <- datapub %.% group_by(tableName) %.% mutate(columnID = 1:length(tableName))
   
@@ -85,4 +90,5 @@ inputDataPubIS <- function(datapub,db){
   colnames(tabledefDF) <- c("termID","unitsID","dataTypeID","tableID","columnID")
   addTblDef(tabledefDF,db)
   
+
 }
