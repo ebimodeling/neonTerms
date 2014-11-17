@@ -38,6 +38,13 @@ write.table(DPout, "/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_L1.csv
             row.names=F, quote=F, sep=",")
 
 
+datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_dataingest_NEONDOC001920_termIngest.csv")
+out <- qFull("NEON.DOM.SITE.DP0.10005",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- cbind(DPNumber,datapub)
+
+
+
 # TIS:
 # PAR:
 datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/PAR_IS_termIngest.csv")
