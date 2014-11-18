@@ -4,7 +4,8 @@
 
 termLookUp <- function(x) {
   
-  q <- paste("SELECT TableDPLink.dpID, TableDefinition.termID, TableDefinition.tableID, 
+  q <- paste("SELECT TableDPLink.dpID, TableDefinition.termID, TableDefinition.tableID,
+TableDPLink.tableNum,
 TermDefinition.termName, \nDataProductDescription.name \nFROM TableDPLink\nINNER JOIN 
 TableDefinition\nON TermDefinition.termName = '", x, "' AND TableDPLink.tableID = 
 TableDefinition.tableID\nINNER JOIN TermDefinition \nON TermDefinition.termID = 
