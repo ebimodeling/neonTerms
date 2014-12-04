@@ -47,10 +47,12 @@ DPout <- cbind(DPNumber,datapub)
 
 # TIS:
 # PAR:
-datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/PAR_IS_termIngest.csv")
+datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_1_min.csv")
 out <- qFullIS("NEON.DOM.SITE.DP1.00024",db)
 DPNumber <- genISID(out,db)
-DPout <- cbind(DPNumber,datapub)
-write.csv(DPout,"/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/PAR_IS_termIngest_num.csv",
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_1_min_num.csv",
           row.names=F)
 

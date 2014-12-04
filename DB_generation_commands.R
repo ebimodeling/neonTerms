@@ -111,7 +111,7 @@ addDPD(TSDtables[[1]])
 # TIS
 
 # PAR
-datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/PAR_IS_termIngest.csv")
+datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_1_min.csv")
 TSDtables <- extractTablesIS(datapub)
 inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
 addDPD(TSDtables[[1]])
