@@ -8,7 +8,7 @@
 #' @export
 #' @import RSQLite
 
-addSpIndVer <- function(df, db = NULL,overwrite = F){
+addSpIndVer <- function(df, db = NULL,overwrite = F, dcheck = T){
   tbl <- "VerticalIndex"
   drv <- dbDriver("SQLite")
   namelist <- c("spatialID","dpID","verInd","verDesc")
@@ -24,6 +24,16 @@ addSpIndVer <- function(df, db = NULL,overwrite = F){
     createTbl(tbl,db,namelist,types)
   }
 
+  ### Add ID's
+  if(dcheck && overwrite == FALSE){
+    in.cat <- paste(df$dpID, df$verInd, sep=".")
+    q <- paste("SELECT dpID, verInd FROM",tbl,sep=" ")
+    out <- dbGetQuery(dbConnect(drv, dbname = db), q)
+    out.cat <- paste(out[,1], out[,2], sep=".")
+    in.new <- !(in.cat %in% out.cat)
+    df <- df[in.new,]
+  } 
+  
     spatialID <- createID(dim(df)[1],tbl,db)
     df <- cbind(spatialID,df)
   

@@ -8,7 +8,7 @@
 #' @export
 #' @import RSQLite
 
-addSpIndHor <- function(df, db = NULL,overwrite = F){
+addSpIndHor <- function(df, db = NULL,overwrite = F, dcheck = T){
   tbl <- "HorizontalIndex"
   drv <- dbDriver("SQLite")
   namelist <- c("spatialID","dpID","horInd","horDesc")
@@ -24,6 +24,17 @@ addSpIndHor <- function(df, db = NULL,overwrite = F){
     createTbl(tbl,db,namelist,types)
   }
 
+  ### Add ID's
+  if(dcheck && overwrite == FALSE){
+    in.cat <- paste(df$dpID, df$horInd, sep=".")
+    q <- paste("SELECT dpID, horInd FROM",tbl,sep=" ")
+    out <- dbGetQuery(dbConnect(drv, dbname = db), q)
+    out.cat <- paste(out[,1], out[,2], sep=".")
+    in.new <- !(in.cat %in% out.cat)
+    df <- df[in.new,]
+  } 
+  
+  
     spatialID <- createID(dim(df)[1],tbl,db)
     df <- cbind(spatialID,df)
   

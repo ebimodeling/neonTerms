@@ -116,6 +116,10 @@ TSDtables <- extractTablesIS(datapub)
 inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
 addDPD(TSDtables[[1]])
 
+datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/dataPubPAR30min.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
 
 
 

@@ -56,3 +56,13 @@ DPout$DPNumber <- DPNumber
 write.csv(DPout,"/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_1_min_num.csv",
           row.names=F)
 
+datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/dataPubPAR30min.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00024",db)
+out <- out[which(out$timeInd==30),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_1_min_num.csv",
+          row.names=F)
+
