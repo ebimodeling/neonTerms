@@ -63,6 +63,6 @@ DPNumber <- genISID(out,db)
 DPout <- datapub
 DPout$table <- out$tableName
 DPout$DPNumber <- DPNumber
-write.csv(DPout,"/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_1_min_num.csv",
+write.csv(DPout,"/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_30_min_num.csv",
           row.names=F)
 

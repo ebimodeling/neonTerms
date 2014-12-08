@@ -3,7 +3,7 @@
 \alias{addSpIndVer}
 \title{add to spatial resolution}
 \usage{
-addSpIndVer(df, db = NULL, overwrite = F)
+addSpIndVer(df, db = NULL, overwrite = F, dcheck = T)
 }
 \arguments{
 \item{df}{a dataframe that adheres to the standard of a spatial resolution table}
