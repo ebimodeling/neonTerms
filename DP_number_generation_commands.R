@@ -47,22 +47,46 @@ DPout <- cbind(DPNumber,datapub)
 
 # TIS:
 # PAR:
-datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_1_min.csv")
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PAR/1_min/IS_PAR_1_min_num.csv")
 out <- qFullIS("NEON.DOM.SITE.DP1.00024",db)
+out <- out[which(out$timeInd==1),]
 DPNumber <- genISID(out,db)
 DPout <- datapub
 DPout$table <- out$tableName
 DPout$DPNumber <- DPNumber
-write.csv(DPout,"/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_1_min_num.csv",
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PAR/1_min/IS_PAR_1_min_num.csv",
           row.names=F)
 
-datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/dataPubPAR30min.csv")
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PAR/30_min/IS_PAR_30_min_num.csv")
 out <- qFullIS("NEON.DOM.SITE.DP1.00024",db)
 out <- out[which(out$timeInd==30),]
 DPNumber <- genISID(out,db)
 DPout <- datapub
 DPout$table <- out$tableName
 DPout$DPNumber <- DPNumber
-write.csv(DPout,"/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/IS_PAR_30_min_num.csv",
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PAR/30_min/IS_PAR_30_min_num.csv",
           row.names=F)
+
+# Precip
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/5_min/IS_Pri_Precip_5_min_num.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00006",db)
+out <- out[which(out$timeInd==5),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/5_min/IS_Pri_Precip_5_min_num.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/15_min/IS_Pri_Precip_15_min_num.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00006",db)
+out <- out[which(out$timeInd==15),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/15_min/IS_Pri_Precip_15_min_num.csv",
+          row.names=F)
+
+
 

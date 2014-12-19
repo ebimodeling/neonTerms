@@ -15,11 +15,12 @@ inputDataPubIS <- function(datapub,temporal,horizontal,vertical,db){
   ### Add to the table description - NO TABLES in IS, but still need table info to 
   ### join properly - define one table per spaceXtime combination in an IS product
   tbdfname <- c("table","tableDescription")
-  tabletemp <- datapub[,c("horIndex","vertIndex","timeIndex")]
-  tabledescDF <- data.frame(cbind(paste("TAB", tabletemp$horIndex, tabletemp$vertIndex, 
+  tabletemp <- datapub[,c("dpID","horIndex","vertIndex","timeIndex")]
+  tabledescDF <- data.frame(cbind(paste(substr(tabletemp$dpID, 15, 23), "TAB", 
+                                        tabletemp$horIndex, tabletemp$vertIndex, 
                                     tabletemp$timeIndex, sep=""),
                    paste("HOR", tabletemp$horIndex, ".VER", tabletemp$vertIndex, 
-                         ".TMI", tabletemp$timeIndex, sep="")))
+                         ".TMI", tabletemp$timeIndex, substr(tabletemp$dpID,15,23), sep="")))
   ### the order is important and must match the expectation of the table, this 
   ### mapping will have to change if the spreadsheet input changes
   colnames(tabledescDF) <- c("tableName","tableDesc")
