@@ -138,4 +138,82 @@ TSDtables <- extractTablesIS(datapub)
 inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
 addDPD(TSDtables[[1]])
 
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/secPrecip/30_min/IS_Sec_Precip_30_min_num.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+# SAAT
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Temp/SAAT/1_min/IS_SAAT_1_min_num.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Temp/SAAT/30_min/IS_SAAT_30_min_num.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+# TRAAT
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Temp/TRAAT/1_min/IS_TRAAT_1_min_num.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Temp/TRAAT/30_min/IS_TRAAT_30_min_num.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+# Line PAR
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/LinePAR/1_min/IS_LinePAR_1_min_num.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/LinePAR/30_min/IS_LinePAR_30_min_num.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+# 2D Wind
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/2Dwind/2_min/IS_2DWind_2_min.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/2Dwind/30_min/IS_2DWind_30_minute.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+# Barometric pressure
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/baroPres/1_min/IS_baroPres_1_min.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/baroPres/30_min/IS_baroPres_30_minute.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+# Direct, diffuse, and global radiation
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/DirDifGloRadiation/1_min/dirDifRadiation_1_min.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/DirDifGloRadiation/30_min/dirDifRadiation_30_minute.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
 
