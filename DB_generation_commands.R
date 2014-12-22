@@ -108,7 +108,8 @@ inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
 
 
-# TIS
+# TIS (Derek in planning to move some stuff around on git, so these file paths
+# are probably going to have to change)
 
 # PAR
 datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PAR/1_min/IS_PAR_1_min_num.csv")
