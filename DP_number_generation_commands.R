@@ -243,7 +243,49 @@ write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/DirDi
 
 
 
+# Relative humidity
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/RH/1_min/IS_RH_1_min_num.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00098",db)
+out <- out[which(out$timeInd==1),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/RH/1_min/IS_RH_1_min_num.csv",
+          row.names=F)
 
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/RH/30_min/IS_RH_30_min_num.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00098",db)
+out <- out[which(out$timeInd==30),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/RH/30_min/IS_RH_30_min_num.csv",
+          row.names=F)
+
+
+
+# Net radiation
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/NetRadiation/1_min/IS_NetRadiation_1_min_num.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00023",db)
+out <- out[which(out$timeInd==1),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/NetRadiation/1_min/IS_NetRadiation_1_min_num.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/NetRadiation/30_min/IS_NetRadiation_30_min_num.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00023",db)
+out <- out[which(out$timeInd==30),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/NetRadiation/30_min/IS_NetRadiation_30_min_num.csv",
+          row.names=F)
 
 
 
