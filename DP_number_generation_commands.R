@@ -289,4 +289,46 @@ write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/NetRa
 
 
 
+# Soil temperature
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/SoilTemp/1_min/soilTemp_1_min.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00041",db)
+out <- out[which(out$timeInd==1),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/SoilTemp/1_min/soilTemp_1_min.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/SoilTemp/30_min/soilTemp_30_min.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00041",db)
+out <- out[which(out$timeInd==30),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/SoilTemp/30_min/soilTemp_30_min.csv",
+          row.names=F)
+
+
+# Primary pyranometer
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PriShortwave/1_min/priPyranometer_1_min.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00022",db)
+out <- out[which(out$timeInd==1),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PriShortwave/1_min/priPyranometer_1_min.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PriShortwave/30_min/priPyranometer_30_min.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00022",db)
+out <- out[which(out$timeInd==30),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PriShortwave/30_min/priPyranometer_30_min.csv",
+          row.names=F)
 
