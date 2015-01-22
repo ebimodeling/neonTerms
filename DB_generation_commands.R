@@ -144,6 +144,17 @@ TSDtables <- extractTablesIS(datapub)
 inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
 addDPD(TSDtables[[1]])
 
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/TFPrecip/IS_TFPrecip_1min_num.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/TFPrecip/IS_TFPrecip_30min_num.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
 
 # SAAT
 datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Temp/SAAT/1_min/IS_SAAT_1_min_num.csv")

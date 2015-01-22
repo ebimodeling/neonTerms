@@ -109,6 +109,28 @@ write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Preci
           row.names=F)
 
 
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/TFPrecip/IS_TFPrecip_1min_num.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00006",db)
+out <- out[which(out$tableName=="DP1.00006TFHORVER001"),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/TFPrecip/IS_TFPrecip_1min_num.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/TFPrecip/IS_TFPrecip_30min_num.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00006",db)
+out <- out[which(out$tableName=="DP1.00006TFHORVER030"),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Precip/TFPrecip/IS_TFPrecip_30min_num.csv",
+          row.names=F)
+
+
+
 
 # SAAT
 datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/Temp/SAAT/1_min/IS_SAAT_1_min_num.csv")

@@ -8,7 +8,7 @@
 #' @export
 #' @import RSQLite
 
-addTempInd <- function(df, db = NULL,overwrite = F){
+addTempInd <- function(df, db = NULL,overwrite = F, dcheck = T){
   tbl <- "TemporalIndex"
   drv <- dbDriver("SQLite")
   namelist <- c("tmpID","dpID","timeInd","timeDesc")
@@ -23,6 +23,16 @@ addTempInd <- function(df, db = NULL,overwrite = F){
     types <- c("INT","TEXT","INT","TEXT")
     createTbl(tbl,db,namelist,types)
   }
+  
+  ### Add ID's
+  if(dcheck && overwrite == FALSE){
+    in.cat <- paste(df$dpID, df$timeInd, sep=".")
+    q <- paste("SELECT dpID, timeInd FROM",tbl,sep=" ")
+    out <- dbGetQuery(dbConnect(drv, dbname = db), q)
+    out.cat <- paste(out[,1], out[,2], sep=".")
+    in.new <- !(in.cat %in% out.cat)
+    df <- df[in.new,]
+  } 
   
   tmpID <- createID(dim(df)[1],tbl,db)
   df <- cbind(tmpID,df)
