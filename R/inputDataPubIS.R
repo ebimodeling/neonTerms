@@ -16,7 +16,7 @@ inputDataPubIS <- function(datapub,temporal,horizontal,vertical,db){
   ### join properly - define one table per spaceXtime combination in an IS product
   tbdfname <- c("table","tableDescription")
   tabletemp <- datapub[,c("dpID","horIndex","vertIndex","timeIndex")]
-  if(length(!is.null(datapub$table))>0) {
+  if(length(which(!is.na(datapub$table)))>0) {
     tabledescDF <- data.frame(cbind(datapub$table, paste("HOR", tabletemp$horIndex, 
                                                          ".VER", tabletemp$vertIndex, 
                                                          ".TMI", tabletemp$timeIndex, 
