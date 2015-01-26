@@ -34,6 +34,7 @@ datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_datap
 out <- qFull("NEON.DOM.SITE.DP1.10023",db)
 DPNumber <- genFieldUID(out,db)
 DPout <- cbind(DPNumber,datapub)
+DPout$DPNumber[grep("sample",DPout$sampleInfo)] <- rep("", length(grep("sample",DPout$sampleInfo)))
 write.table(DPout, "/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_L1.csv", 
             row.names=F, quote=F, sep=",")
 

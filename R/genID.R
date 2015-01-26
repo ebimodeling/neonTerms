@@ -16,6 +16,8 @@ genFieldUID <- function(out,db){
   ret <- apply(fullIDs,1,paste,collapse=".")
   hooks <- which(out$termName %in% c("date","addDate","collectDate","domainID",
                                      "siteID","plotID","samplingProtocol"))
+  #samp <- grep("sample", out$sampleInfo)
+  #hooks <- order(c(samp, hooks1))
   ret[hooks] <- rep("", length(hooks))
   return(ret)
 }
