@@ -46,6 +46,20 @@ DPout <- cbind(DPNumber,datapub)
 
 
 
+#stream water chemistry level 0:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_data ingest_01262015.csv")
+out <- qFull("NEON.DOM.SITE.DP0.20093",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+DPout$DPNumber[grep("sample",DPout$sampleInfo)] <- rep("", length(grep("sample",DPout$sampleInfo)))
+write.table(DPout, "/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_data ingest_01262015.csv", 
+            row.names=F, quote=F, sep=",")
+
+
+
+
+
 # TIS:
 # PAR:
 datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/PAR/1_min/IS_PAR_1_min_num.csv")
