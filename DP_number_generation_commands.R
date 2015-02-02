@@ -52,7 +52,8 @@ out <- qFull("NEON.DOM.SITE.DP0.20093",db)
 DPNumber <- genFieldUID(out,db)
 DPout <- datapub
 DPout$DPNumber <- DPNumber
-DPout$DPNumber[grep("sample",DPout$sampleInfo)] <- rep("", length(grep("sample",DPout$sampleInfo)))
+DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
+  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_data ingest_01262015.csv", 
             row.names=F, quote=F, sep=",")
 
