@@ -58,6 +58,17 @@ write.table(DPout, "/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.00
             row.names=F, quote=F, sep=",")
 
 
+#aquatic field metadata level 0:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/AquFieldMetadata/NEON.DOC.001627_afm_dataIngest_12312014.csv")
+out <- qFull("NEON.DOM.SITE.DP0.20000",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
+  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
+write.table(DPout, "/Users/clunch/biogeochemistryIPT/AquFieldMetadata/NEON.DOC.001627_afm_dataIngest_12312014.csv", 
+            row.names=F, quote=F, sep=",")
+
 
 
 
