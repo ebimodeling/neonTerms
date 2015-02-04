@@ -306,3 +306,9 @@ TSDtables <- extractTables(datapub)
 inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
 
+#aquatic field metadata level 0:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/AquFieldMetadata/NEON.DOC.001627_afm_dataIngest_12312014.csv")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
