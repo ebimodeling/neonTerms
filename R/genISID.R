@@ -14,7 +14,7 @@ genISID <- function(out,db){
   terms <- sapply(out$termID,addBuff,buf=5)
   fullIDs <- cbind(out$dpID,rev,terms,hor,ver,tmp)
   ret <- apply(fullIDs,1,paste,collapse=".")
-  hooks <- which(out$termName %in% c("date","addDate","collectDate","domainID",
+  hooks <- which(out$termName %in% c("date","addDate","collectDate","startDate","endDate","domainID",
                                      "siteID","plotID","stationID","samplingProtocol"))
   ret[hooks] <- rep("", length(hooks))
   return(ret)
