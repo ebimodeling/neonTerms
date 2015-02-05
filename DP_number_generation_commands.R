@@ -39,11 +39,14 @@ write.table(DPout, "/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_L1.csv
             row.names=F, quote=F, sep=",")
 
 
-datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_dataingest_NEONDOC001920_termIngest.csv")
-out <- qFull("NEON.DOM.SITE.DP0.10005",db)
+#phenology level 1:
+datapub <- read.csv("/Users/clunch/organismalIPT/phenology/phe_datapub_NEONDOC001420.csv")
+out <- qFull("NEON.DOM.SITE.DP1.10055",db)
 DPNumber <- genFieldUID(out,db)
 DPout <- cbind(DPNumber,datapub)
-
+DPout$DPNumber[grep("sample",DPout$sampleInfo)] <- rep("", length(grep("sample",DPout$sampleInfo)))
+write.table(DPout, "/Users/clunch/organismalIPT/phenology/phe_datapub_NEONDOC001420.csv", 
+            row.names=F, quote=F, sep=",")
 
 
 #stream water chemistry level 0:

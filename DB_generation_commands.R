@@ -74,7 +74,7 @@ addDPD(TSDtables[[1]])
 
 
 #phenology level 1:
-datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/phe_datapub_NEONDOC001420_termIngest.csv")
+datapub <- read.csv("/Users/clunch/organismalIPT/phenology/phe_datapub_NEONDOC001420.csv")
 TSDtables <- extractTables(datapub)
 inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
