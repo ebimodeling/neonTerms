@@ -37,7 +37,7 @@ DPout <- cbind(DPNumber,datapub)
 DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
   rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_L1.csv", 
-            row.names=F, quote=F, sep=",")
+            row.names=F, quote=T, sep=",")
 
 
 #phenology level 0:
@@ -49,7 +49,7 @@ DPout$DPNumber <- DPNumber
 DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
   rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/organismalIPT/phenology/phe_dataingest_NEONDOC001408.csv", 
-            row.names=F, quote=F, sep=",")
+            row.names=F, quote=T, sep=",")
 
 
 #phenology level 1:
@@ -61,7 +61,7 @@ DPout$DPNumber <- DPNumber
 DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
   rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/organismalIPT/phenology/phe_datapub_NEONDOC001420.csv", 
-            row.names=F, quote=F, sep=",")
+            row.names=F, quote=T, sep=",")
 
 
 #stream water chemistry level 0:
@@ -73,7 +73,7 @@ DPout$DPNumber <- DPNumber
 DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
   rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_data ingest_01262015.csv", 
-            row.names=F, quote=F, sep=",")
+            row.names=F, quote=T, sep=",")
 
 
 #aquatic field metadata level 0:
@@ -85,7 +85,7 @@ DPout$DPNumber <- DPNumber
 DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
   rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/biogeochemistryIPT/AquFieldMetadata/NEON.DOC.001627_afm_dataIngest_12312014.csv", 
-            row.names=F, quote=F, sep=",")
+            row.names=F, quote=T, sep=",")
 
 
 
