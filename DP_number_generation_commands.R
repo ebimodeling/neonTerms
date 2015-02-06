@@ -34,8 +34,21 @@ datapub <- read.csv("/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_datap
 out <- qFull("NEON.DOM.SITE.DP1.10023",db)
 DPNumber <- genFieldUID(out,db)
 DPout <- cbind(DPNumber,datapub)
-DPout$DPNumber[grep("sample",DPout$sampleInfo)] <- rep("", length(grep("sample",DPout$sampleInfo)))
+DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
+  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_L1.csv", 
+            row.names=F, quote=F, sep=",")
+
+
+#phenology level 0:
+datapub <- read.csv("/Users/clunch/organismalIPT/phenology/phe_dataingest_NEONDOC001408.csv")
+out <- qFull("NEON.DOM.SITE.DP0.10002",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
+  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
+write.table(DPout, "/Users/clunch/organismalIPT/phenology/phe_dataingest_NEONDOC001408.csv", 
             row.names=F, quote=F, sep=",")
 
 
@@ -43,8 +56,10 @@ write.table(DPout, "/Users/clunch/Dropbox/DPS Public/DPS Docs/TermsDB/hbp_L1.csv
 datapub <- read.csv("/Users/clunch/organismalIPT/phenology/phe_datapub_NEONDOC001420.csv")
 out <- qFull("NEON.DOM.SITE.DP1.10055",db)
 DPNumber <- genFieldUID(out,db)
-DPout <- cbind(DPNumber,datapub)
-DPout$DPNumber[grep("sample",DPout$sampleInfo)] <- rep("", length(grep("sample",DPout$sampleInfo)))
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
+  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/organismalIPT/phenology/phe_datapub_NEONDOC001420.csv", 
             row.names=F, quote=F, sep=",")
 
