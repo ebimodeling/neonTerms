@@ -301,10 +301,17 @@ addDPD(TSDtables[[1]])
 
 
 #stream water chemistry level 0:
-datapub <- read.csv("/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_data ingest_01262015.csv")
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_dataIngest_01262015.csv")
 TSDtables <- extractTables(datapub)
 inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
+
+#stream water chemistry level 1:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002292_datapub_swc.csv")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
 
 #aquatic field metadata level 0:
 datapub <- read.csv("/Users/clunch/biogeochemistryIPT/AquFieldMetadata/NEON.DOC.001627_afm_dataIngest_12312014.csv")

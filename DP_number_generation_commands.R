@@ -65,14 +65,26 @@ write.table(DPout, "/Users/clunch/organismalIPT/phenology/phe_datapub_NEONDOC001
 
 
 #stream water chemistry level 0:
-datapub <- read.csv("/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_data ingest_01262015.csv")
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_dataIngest_01262015.csv")
 out <- qFull("NEON.DOM.SITE.DP0.20093",db)
 DPNumber <- genFieldUID(out,db)
 DPout <- datapub
 DPout$DPNumber <- DPNumber
 DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
   rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
-write.table(DPout, "/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_data ingest_01262015.csv", 
+write.table(DPout, "/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002291_swc_dataIngest_01262015.csv", 
+            row.names=F, quote=T, sep=",")
+
+
+#stream water chemistry level 1:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002292_datapub_swc.csv")
+out <- qFull("NEON.DOM.SITE.DP1.20093",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
+  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
+write.table(DPout, "/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002292_datapub_swc.csv", 
             row.names=F, quote=T, sep=",")
 
 
