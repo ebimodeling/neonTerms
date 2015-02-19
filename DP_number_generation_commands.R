@@ -100,6 +100,18 @@ write.table(DPout, "/Users/clunch/biogeochemistryIPT/AquFieldMetadata/NEON.DOC.0
             row.names=F, quote=T, sep=",")
 
 
+#stream water chemistry level 0:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/Ingest_20141211.csv")
+out <- qFull("NEON.DOM.SITE.DP0.00096",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
+  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
+write.table(DPout, "/Users/clunch/biogeochemistryIPT/megapit/Ingest_20141211.csv", 
+            row.names=F, quote=T, sep=",")
+
+
 
 
 # TIS:

@@ -319,3 +319,10 @@ TSDtables <- extractTables(datapub)
 inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
 
+
+#megapit level 0:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/Ingest_20141211.csv")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
