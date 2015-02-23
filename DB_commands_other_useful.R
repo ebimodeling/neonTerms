@@ -118,15 +118,43 @@ dbGetQuery(dbConnect(dbDriver("SQLite"),db), q)
 
 # get all uses of uid
 q <- "SELECT TableDPLink.dpID, TableDefinition.termID, TableDefinition.tableID, 
-           TermDefinition.termName,\nSpatialResolution.spatialRes,SpatialResolution.spatialDesc,
-           TemporalResolution.timeRes,TemporalResolution.timeDesc\nFROM TableDPLink\nINNER JOIN 
+           TermDefinition.termName,\nSpatialIndex.spatialInd,SpatialIndex.spatialDesc,
+           TemporalIndex.timeInd,TemporalIndex.timeDesc\nFROM TableDPLink\nINNER JOIN 
            TableDefinition\nON TermDefinition.termName = 'uid' AND TableDPLink.tableID = 
            TableDefinition.tableID\nINNER JOIN TermDefinition \nON TermDefinition.termID = 
-           TableDefinition.termID\nINNER JOIN SpatialResolution\nON TableDPLink.dpID = 
-           SpatialResolution.dpID\nINNER JOIN TemporalResolution\nON TableDPLink.dpID = 
-           TemporalResolution.dpID\nORDER BY TableDefinition.tableID,SpatialResolution.spatialRes,
-           TemporalResolution.timeRes,TableDefinition.termID"
+           TableDefinition.termID\nINNER JOIN SpatialIndex\nON TableDPLink.dpID = 
+           SpatialIndex.dpID\nINNER JOIN TemporalIndex\nON TableDPLink.dpID = 
+           TemporalIndex.dpID\nORDER BY TableDefinition.tableID,SpatialIndex.spatialInd,
+           TemporalIndex.timeInd,TableDefinition.termID"
 dbGetQuery(dbConnect(dbDriver("SQLite"),db), q)
+
+# get all terms with their units
+q <- "SELECT TableDefinition.termID,
+           TermDefinition.termName,UnitsTable.unitsDesc\nFROM TableDefinition\nINNER JOIN 
+           TermDefinition\nON TermDefinition.termID = TableDefinition.termID\nINNER JOIN UnitsTable 
+           \nON TableDefinition.unitsID = 
+           UnitsTable.unitsID\nORDER BY TableDefinition.termID"
+termsNunits <- dbGetQuery(dbConnect(dbDriver("SQLite"),db), q)
+termsNunits <- unique(termsNunits)
+write.table(termsNunits, file="/Users/clunch/Desktop/termsWunits.csv", 
+            sep=",", row.names=F)
+
+# get all terms with their units and data types
+q <- "SELECT TableDefinition.termID,
+           TermDefinition.termName,UnitsTable.unitsDesc,DataTypeTable.dataTypeDesc
+\nFROM TableDefinition\nINNER JOIN 
+TermDefinition\nON TermDefinition.termID = TableDefinition.termID\nINNER JOIN UnitsTable 
+\nON TableDefinition.unitsID = 
+UnitsTable.unitsID\nINNER JOIN DataTypeTable 
+\nON TableDefinition.dataTypeID = 
+DataTypeTable.dataTypeID\nORDER BY TableDefinition.termID"
+termsUnitsDTs <- dbGetQuery(dbConnect(dbDriver("SQLite"),db), q)
+termsUnitsDTs <- unique(termsUnitsDTs)
+write.table(termsUnitsDTs, file="/Users/clunch/Desktop/termsUnitsDTs.csv", 
+            sep=",", row.names=F)
+
+
+
 
 # get all 30 min temporal resolution with term definitions included
 q <- "SELECT TableDPLink.dpID, TableDefinition.termID, TableDefinition.tableID, 
