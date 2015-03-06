@@ -27,7 +27,7 @@ db <- "november.sqlite"
 options(termDB="november.sqlite")
 
 # finds all uses of a given term in the database
-termLookUp("secPrecipRangeFailQM")
+termLookUp("sampleType")
 
 # checks term definitions in a new file against existing database
 # deprecated in favor of shiny app
