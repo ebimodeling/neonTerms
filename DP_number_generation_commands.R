@@ -469,3 +469,111 @@ write.csv(DPout,"/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/soil_
           row.names=F)
 
 
+
+# TIS L0s
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/2D_wind_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00001",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/2D_wind_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/BaroPress_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00004",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/BaroPress_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/NetRadiometer_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00023",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/NetRadiometer_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/PAR_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00024",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/PAR_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/Precip_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00006",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/Precip_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/PrimaryPyranometer_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00022",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/PrimaryPyranometer_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/QuantumLinePAR_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00066",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/QuantumLinePAR_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/SAAT_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00002",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/SAAT_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/SunPhotometer_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00043",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/SunPhotometer_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/SWRad_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00014",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/SWRad_L0.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/TRAAT_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00003",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/TRAAT_L0.csv",
+          row.names=F)
+
+
+
+
+
+
+
+
