@@ -82,8 +82,6 @@ out <- qFull("NEON.DOM.SITE.DP1.20093",db)
 DPNumber <- genFieldUID(out,db)
 DPout <- datapub
 DPout$DPNumber <- DPNumber
-DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
-  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/biogeochemistryIPT/StreamWaterChem/NEON.DOC.002292_datapub_swc.csv", 
             row.names=F, quote=T, sep=",")
 
@@ -100,7 +98,7 @@ write.table(DPout, "/Users/clunch/biogeochemistryIPT/AquFieldMetadata/NEON.DOC.0
             row.names=F, quote=T, sep=",")
 
 
-#stream water chemistry level 0:
+#megapit level 0:
 datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/Ingest_20141211.csv")
 out <- qFull("NEON.DOM.SITE.DP0.00096",db)
 DPNumber <- genFieldUID(out,db)
@@ -109,6 +107,24 @@ DPout$DPNumber <- DPNumber
 DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
   rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
 write.table(DPout, "/Users/clunch/biogeochemistryIPT/megapit/Ingest_20141211.csv", 
+            row.names=F, quote=T, sep=",")
+
+#megapit physical level 1:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/MGP_datapub.csv")
+out <- qFull("NEON.DOM.SITE.DP1.00096",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+write.table(DPout, "/Users/clunch/biogeochemistryIPT/megapit/MGP_datapub.csv", 
+            row.names=F, quote=T, sep=",")
+
+#megapit chemical level 1:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/MGC_datapub.csv")
+out <- qFull("NEON.DOM.SITE.DP1.00097",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+write.table(DPout, "/Users/clunch/biogeochemistryIPT/megapit/MGC_datapub.csv", 
             row.names=F, quote=T, sep=",")
 
 

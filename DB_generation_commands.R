@@ -327,6 +327,20 @@ inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
 
 
+#megapit physical level 1:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/MGP_datapub.csv")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+#megapit chemical level 1:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/MGC_datapub.csv")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+
+
 
 #TIS L0s
 datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/2D_wind_L0.csv")
