@@ -586,6 +586,15 @@ DPout$DPNumber <- DPNumber
 write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/TRAAT_L0.csv",
           row.names=F)
 
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/RH_L0.csv")
+out <- qFullIS("NEON.DOM.SITE.DP0.00098",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/RH_L0.csv",
+          row.names=F)
+
 
 
 
