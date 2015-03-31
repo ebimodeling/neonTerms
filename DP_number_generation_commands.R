@@ -128,6 +128,27 @@ write.table(DPout, "/Users/clunch/biogeochemistryIPT/megapit/MGC_datapub.csv",
             row.names=F, quote=T, sep=",")
 
 
+#stream discharge level 0:
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/stream_discharge/NEON.DOC.002815_dsc_data_ingest.csv")
+out <- qFull("NEON.DOM.SITE.DP0.20048",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
+  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
+write.table(DPout, "/Users/clunch/landWaterSoilIPT/stream_discharge/NEON.DOC.002815_dsc_data_ingest.csv", 
+            row.names=F, quote=T, sep=",")
+
+#megapit physical level 1:
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/stream_discharge/NEON.DOC.002815_dsc_publication_workbook.csv")
+out <- qFull("NEON.DOM.SITE.DP1.20048",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+write.table(DPout, "/Users/clunch/landWaterSoilIPT/stream_discharge/NEON.DOC.002815_dsc_publication_workbook.csv", 
+            row.names=F, quote=T, sep=",")
+
+
 
 
 # TIS:

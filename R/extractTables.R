@@ -4,9 +4,10 @@
 
 
 extractTables <- function(tab) {
-  dpd <- tab[1,c("dpID","DPName","DPDescription","dpID")]
+  dpd <- tab[1,c("dpID","DPName","sampleInfo","dpID")]
   dpd[,4] <- substr(tab$dpID[1],17,17)
   colnames(dpd) <- c("dpID","name","description","level")
+  dpd[,3] <- ""
   dpd$rev <- 1
     
   num.times <- length(unique(tab$timeDescription))
