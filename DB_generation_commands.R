@@ -424,6 +424,29 @@ addDPD(TSDtables[[1]])
 
 
 
+# Sun photometer
+datapub <- read.csv("/Users/clunch/FIU-CI/sun_photometer/dataPubInfo/datapub_NEONDOC001455_999min.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+# PAR at water surface
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_1minute.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_5minute.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_30minute.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
 
 
 

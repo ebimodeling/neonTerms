@@ -618,6 +618,49 @@ write.csv(DPout,"/Users/clunch/IS-Data-Publication/L0_renumbering/RH_L0.csv",
 
 
 
+# Sun photometer
+datapub <- read.csv("/Users/clunch/FIU-CI/sun_photometer/dataPubInfo/datapub_NEONDOC001455_999min.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.00043",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/FIU-CI/sun_photometer/dataPubInfo/datapub_NEONDOC001455_999min.csv",
+          row.names=F)
+
+
+# PAR at water surface
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_1minute.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.20042",db)
+out <- out[which(out$timeInd==1),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_1minute.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_5minute.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.20042",db)
+out <- out[which(out$timeInd==5),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_5minute.csv",
+          row.names=F)
+
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_30minute.csv")
+out <- qFullIS("NEON.DOM.SITE.DP1.20042",db)
+out <- out[which(out$timeInd==30),]
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout$DPNumber <- DPNumber
+write.csv(DPout,"/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_30minute.csv",
+          row.names=F)
+
+
 
 
 
