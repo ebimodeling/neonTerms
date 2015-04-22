@@ -8,7 +8,7 @@ extractTablesIS <- function(tab) {
   dpd[,4] <- substr(tab$dpID[1],17,17)
   colnames(dpd) <- c("dpID","name","description","level")
   dpd[,3] <- ""
-  dpd$rev <- 1
+  dpd$rev <- substr(tab$dpID[1],25,27)
     
   num.times <- length(unique(tab$timeIndex))
   temporal <- data.frame(matrix(data=NA,ncol=3,nrow=num.times))
