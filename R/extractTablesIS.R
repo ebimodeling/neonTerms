@@ -4,7 +4,7 @@
 
 
 extractTablesIS <- function(tab) {
-  dpd <- tab[1,c("dpID","DPName","sampleInfo","dpID")]
+  dpd <- tab[1,c("dpID","DPName","dataType","dpID")]
   dpd[,4] <- substr(tab$dpID[1],17,17)
   colnames(dpd) <- c("dpID","name","description","level")
   dpd[,3] <- ""

@@ -662,6 +662,63 @@ write.csv(DPout,"/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/da
 
 
 
+# AIS L0s
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/AquaTroll_L0.txt")
+out <- qFullIS("NEON.DOM.SITE.DP0.20015.001",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout <- cbind(DPNumber, DPout)
+write.table(DPout,"/Users/clunch/landWaterSoilIPT/AQU_L0/AquaTroll_L0.txt", sep="\t",
+      row.names=F)
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/LevelTroll_L0.txt")
+out <- qFullIS("NEON.DOM.SITE.DP0.20016.001",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout <- cbind(DPNumber, DPout)
+write.table(DPout,"/Users/clunch/landWaterSoilIPT/AQU_L0/LevelTroll_L0.txt", sep="\t",
+            row.names=F)
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/Nitrate_L0.txt")
+out <- qFullIS("NEON.DOM.SITE.DP0.20033.001",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout <- cbind(DPNumber, DPout)
+write.table(DPout,"/Users/clunch/landWaterSoilIPT/AQU_L0/Nitrate_L0.txt", sep="\t",
+            row.names=F)
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/PRT_L0.txt")
+out <- qFullIS("NEON.DOM.SITE.DP0.20053.001",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout <- cbind(DPNumber, DPout)
+write.table(DPout,"/Users/clunch/landWaterSoilIPT/AQU_L0/PRT_L0.txt", sep="\t",
+            row.names=F)
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/uPAR_L0.txt")
+out <- qFullIS("NEON.DOM.SITE.DP0.20261.001",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout <- cbind(DPNumber, DPout)
+write.table(DPout,"/Users/clunch/landWaterSoilIPT/AQU_L0/uPAR_L0.txt", sep="\t",
+            row.names=F)
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/WaterQuality_L0.txt")
+out <- qFullIS("NEON.DOM.SITE.DP0.20005.001",db)
+DPNumber <- genISID(out,db)
+DPout <- datapub
+DPout$table <- out$tableName
+DPout <- cbind(DPNumber, DPout)
+write.table(DPout,"/Users/clunch/landWaterSoilIPT/AQU_L0/WaterQuality_L0.txt", sep="\t",
+            row.names=F)
+
+
+
 
 
 
