@@ -234,7 +234,7 @@ TSDtables <- extractTablesIS(datapub)
 inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
 addDPD(TSDtables[[1]])
 
-datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/RH/30_min/IS_RH_30_min_num.csv")
+datapub <- read.delim("/Users/clunch/FIU-CI/relative_humidity/dataPubInfo/rhd_datapub_NEONDOC002886.txt")
 TSDtables <- extractTablesIS(datapub)
 inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
 addDPD(TSDtables[[1]])
@@ -417,7 +417,7 @@ inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
 
 #stream discharge level 1:
-datapub <- read.csv("/Users/clunch/landWaterSoilIPT/stream_discharge/NEON.DOC.002815_dsc_publication_workbook.csv")
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/stream_discharge/dataPubInfo/dsc_datapub_NEONDOC002816.txt")
 TSDtables <- extractTables(datapub)
 inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])

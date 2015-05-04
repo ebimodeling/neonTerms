@@ -7,7 +7,7 @@ genFieldUID <- function(out,db){
   #q <- paste("SELECT rev FROM DataProductDescription WHERE dpID = ","'",out$dpID[1],"'",sep="")
   #rev <-  dbGetQuery(conn = dbC, q)
   s <- dim(out)[1]
-  rev <- rep(addBuff(3,rev),s)
+  #rev <- rep(addBuff(3,rev),s)
   spat <- sapply(out$spatialInd,addBuff,buf=3)
   tmp <- sapply(out$timeInd,addBuff,buf=3)
   tbl <- sapply(out$tableNum,addBuff,buf=3)
