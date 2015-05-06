@@ -150,6 +150,30 @@ write.table(DPout, "/Users/clunch/landWaterSoilIPT/stream_discharge/dataPubInfo/
 
 
 
+#groundwater chemistry level 0:
+datapub <- read.delim("/Users/clunch/biogeochemistryIPT/GroundwaterChem/NEON.DOC.002289_gwc_dataIngest.txt")
+out <- qFull("NEON.DOM.SITE.DP0.20092.001",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
+  rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
+write.table(DPout, "/Users/clunch/biogeochemistryIPT/GroundwaterChem/NEON.DOC.002289_gwc_dataIngest.txt", 
+            row.names=F, sep="\t")
+
+
+#stream water chemistry level 1:
+datapub <- read.delim("/Users/clunch/biogeochemistryIPT/GroundwaterChem/NEON.DOC.002290_datapub_gwc.txt")
+out <- qFull("NEON.DOM.SITE.DP1.20092.001",db)
+DPNumber <- genFieldUID(out,db)
+DPout <- datapub
+DPout$DPNumber <- DPNumber
+write.table(DPout, "/Users/clunch/biogeochemistryIPT/GroundwaterChem/NEON.DOC.002290_datapub_gwc.txt", 
+            row.names=F, sep="\t")
+
+
+
+
 
 # TIS:
 # PAR:

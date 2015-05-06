@@ -340,6 +340,21 @@ inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
 
 
+#groundwater chemistry level 0:
+datapub <- read.delim("/Users/clunch/biogeochemistryIPT/GroundwaterChem/NEON.DOC.002289_gwc_dataIngest.txt")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+#groundwater chemistry level 1:
+datapub <- read.delim("/Users/clunch/biogeochemistryIPT/GroundwaterChem/NEON.DOC.002290_datapub_gwc.txt")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+
+
+
 
 
 #TIS L0s
