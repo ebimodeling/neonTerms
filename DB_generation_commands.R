@@ -229,11 +229,6 @@ addDPD(TSDtables[[1]])
 
 
 # Relative humidity
-datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/RH/1_min/IS_RH_1_min_num.csv")
-TSDtables <- extractTablesIS(datapub)
-inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
-addDPD(TSDtables[[1]])
-
 datapub <- read.delim("/Users/clunch/FIU-CI/relative_humidity/dataPubInfo/rhd_datapub_NEONDOC002886.txt")
 TSDtables <- extractTablesIS(datapub)
 inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
