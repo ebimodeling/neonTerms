@@ -129,15 +129,15 @@ write.table(DPout, "/Users/clunch/biogeochemistryIPT/megapit/MGC_datapub.csv",
 
 
 #stream discharge level 0:
-datapub <- read.csv("/Users/clunch/landWaterSoilIPT/stream_discharge/NEON.DOC.002815_dsc_data_ingest.csv")
-out <- qFull("NEON.DOM.SITE.DP0.20048",db)
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/stream_discharge/dsc_dataingest_NEONDOC002815.txt")
+out <- qFull("NEON.DOM.SITE.DP0.20048.001",db)
 DPNumber <- genFieldUID(out,db)
 DPout <- datapub
 DPout$DPNumber <- DPNumber
 DPout$DPNumber[grep("sample",DPout$sampleInfo,ignore.case=T)] <- 
   rep("", length(grep("sample",DPout$sampleInfo,ignore.case=T)))
-write.table(DPout, "/Users/clunch/landWaterSoilIPT/stream_discharge/NEON.DOC.002815_dsc_data_ingest.csv", 
-            row.names=F, quote=T, sep=",")
+write.table(DPout, "/Users/clunch/landWaterSoilIPT/stream_discharge/dsc_dataingest_NEONDOC002815.txt", 
+            row.names=F, sep="\t")
 
 #stream discharge level 1:
 datapub <- read.delim("/Users/clunch/landWaterSoilIPT/stream_discharge/dataPubInfo/dsc_datapub_NEONDOC002816.txt")

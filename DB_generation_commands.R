@@ -421,7 +421,7 @@ addDPD(TSDtables[[1]])
 
 
 #stream discharge level 0:
-datapub <- read.csv("/Users/clunch/landWaterSoilIPT/stream_discharge/NEON.DOC.002815_dsc_data_ingest.csv")
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/stream_discharge/dsc_dataingest_NEONDOC002815.txt")
 TSDtables <- extractTables(datapub)
 inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
