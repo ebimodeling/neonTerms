@@ -229,12 +229,7 @@ addDPD(TSDtables[[1]])
 
 
 # Relative humidity
-datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/RH/1_min/IS_RH_1_min_num.csv")
-TSDtables <- extractTablesIS(datapub)
-inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
-addDPD(TSDtables[[1]])
-
-datapub <- read.csv("/Users/clunch/IS-Data-Publication/Ingest_files_for_Claire/RH/30_min/IS_RH_30_min_num.csv")
+datapub <- read.delim("/Users/clunch/FIU-CI/relative_humidity/dataPubInfo/rhd_datapub_NEONDOC002886.txt")
 TSDtables <- extractTablesIS(datapub)
 inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
 addDPD(TSDtables[[1]])
@@ -321,8 +316,238 @@ addDPD(TSDtables[[1]])
 
 
 #megapit level 0:
-datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/Ingest_20141211.csv")
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/MGP_dataingest.csv")
 TSDtables <- extractTables(datapub)
 inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
 addDPD(TSDtables[[1]])
+
+
+#megapit physical level 1:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/MGP_datapub.csv")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+#megapit chemical level 1:
+datapub <- read.csv("/Users/clunch/biogeochemistryIPT/megapit/MGC_datapub.csv")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+
+#groundwater chemistry level 0:
+datapub <- read.delim("/Users/clunch/biogeochemistryIPT/GroundwaterChem/NEON.DOC.002289_gwc_dataIngest.txt")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+#groundwater chemistry level 1:
+datapub <- read.delim("/Users/clunch/biogeochemistryIPT/GroundwaterChem/NEON.DOC.002290_datapub_gwc.txt")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+
+
+
+
+
+#TIS L0s
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/2D_wind_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/BaroPress_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/IRBioTemp_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/NetRadiometer_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/PAR_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/Precip_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/PrimaryPyranometer_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/QuantumLinePAR_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/SAAT_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/SunPhotometer_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/SWRad_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/TRAAT_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/IS-Data-Publication/L0_renumbering/RH_L0.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+
+#stream discharge level 0:
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/stream_discharge/dsc_dataingest_NEONDOC002815.txt")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+#stream discharge level 1:
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/stream_discharge/dataPubInfo/dsc_datapub_NEONDOC002816.txt")
+TSDtables <- extractTables(datapub)
+inputDataPub(datapub,TSDtables[[2]],TSDtables[[3]],db)
+addDPD(TSDtables[[1]])
+
+
+
+# Sun photometer
+datapub <- read.csv("/Users/clunch/FIU-CI/sun_photometer/dataPubInfo/datapub_NEONDOC001455_999min.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+# PAR at water surface
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_1minute.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_5minute.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.csv("/Users/clunch/landWaterSoilIPT/par_water_surface/dataPubInfo/datapub_NEONDOC000781_30minute.csv")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
+# AIS L0s
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/AquaTroll_L0.txt")
+table <- rep(NA, nrow(datapub))
+DPNumber <- rep(NA, nrow(datapub))
+timeIndex <- rep(0, nrow(datapub))
+timeDescription <- rep("native resolution", nrow(datapub))
+horIndex <- rep("HOR", nrow(datapub))
+horDescription <- rep("variable", nrow(datapub))
+vertIndex <- rep("VER", nrow(datapub))
+vertDescription <- rep("variable", nrow(datapub))
+datapub <- cbind(table, DPNumber, datapub, timeIndex, timeDescription,
+                 horIndex, horDescription, vertIndex, vertDescription)
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/LevelTroll_L0.txt")
+table <- rep(NA, nrow(datapub))
+DPNumber <- rep(NA, nrow(datapub))
+timeIndex <- rep(0, nrow(datapub))
+timeDescription <- rep("native resolution", nrow(datapub))
+horIndex <- rep("HOR", nrow(datapub))
+horDescription <- rep("variable", nrow(datapub))
+vertIndex <- rep("VER", nrow(datapub))
+vertDescription <- rep("variable", nrow(datapub))
+datapub <- cbind(table, DPNumber, datapub, timeIndex, timeDescription,
+                 horIndex, horDescription, vertIndex, vertDescription)
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/Nitrate_L0.txt")
+table <- rep(NA, nrow(datapub))
+DPNumber <- rep(NA, nrow(datapub))
+timeIndex <- rep(0, nrow(datapub))
+timeDescription <- rep("native resolution", nrow(datapub))
+horIndex <- rep("HOR", nrow(datapub))
+horDescription <- rep("variable", nrow(datapub))
+vertIndex <- rep("VER", nrow(datapub))
+vertDescription <- rep("variable", nrow(datapub))
+datapub <- cbind(table, DPNumber, datapub, timeIndex, timeDescription,
+                 horIndex, horDescription, vertIndex, vertDescription)
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/PRT_L0.txt")
+table <- rep(NA, nrow(datapub))
+DPNumber <- rep(NA, nrow(datapub))
+timeIndex <- rep(0, nrow(datapub))
+timeDescription <- rep("native resolution", nrow(datapub))
+horIndex <- rep("HOR", nrow(datapub))
+horDescription <- rep("variable", nrow(datapub))
+vertIndex <- rep("VER", nrow(datapub))
+vertDescription <- rep("variable", nrow(datapub))
+datapub <- cbind(table, DPNumber, datapub, timeIndex, timeDescription,
+                 horIndex, horDescription, vertIndex, vertDescription)
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/uPAR_L0.txt")
+table <- rep(NA, nrow(datapub))
+DPNumber <- rep(NA, nrow(datapub))
+timeIndex <- rep(0, nrow(datapub))
+timeDescription <- rep("native resolution", nrow(datapub))
+horIndex <- rep("HOR", nrow(datapub))
+horDescription <- rep("variable", nrow(datapub))
+vertIndex <- rep("VER", nrow(datapub))
+vertDescription <- rep("variable", nrow(datapub))
+datapub <- cbind(table, DPNumber, datapub, timeIndex, timeDescription,
+                 horIndex, horDescription, vertIndex, vertDescription)
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/AQU_L0/WaterQuality_L0.txt")
+table <- rep(NA, nrow(datapub))
+DPNumber <- rep(NA, nrow(datapub))
+timeIndex <- rep(0, nrow(datapub))
+timeDescription <- rep("native resolution", nrow(datapub))
+horIndex <- rep("HOR", nrow(datapub))
+horDescription <- rep("variable", nrow(datapub))
+vertIndex <- rep("VER", nrow(datapub))
+vertDescription <- rep("variable", nrow(datapub))
+datapub <- cbind(table, DPNumber, datapub, timeIndex, timeDescription,
+                 horIndex, horDescription, vertIndex, vertDescription)
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+
 

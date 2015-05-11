@@ -24,8 +24,9 @@ inputDataPub <- function(datapub,temporal,space,db){
   drv <- dbDriver("SQLite")
   dbC <- dbConnect(drv, dbname=db)
   
-  tlinkname <- c("table","dpID") 
-  tlinkDF <- datapub[,colnames(datapub)%in%tlinkname]
+  #tlinkname <- c("table","dpID") 
+  #tlinkDF <- datapub[,colnames(datapub)%in%tlinkname]
+  tlinkDF <- datapub[,c("table","dpID")]
   
   tlinkDF <- tlinkDF[!duplicated(tlinkDF$table),]
   tableID <- unlist(sapply(tlinkDF$table,function(x){q <-paste("SELECT tableID FROM TableDescription WHERE tableName = ", "'",x,"'",sep="");return(dbGetQuery(conn = dbC, q))}))
