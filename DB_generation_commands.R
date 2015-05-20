@@ -550,4 +550,9 @@ inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
 addDPD(TSDtables[[1]])
 
 
+# groundwater temperature
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/groundwater_temp/dataPubInfo/gwt_datapub_NEONDOC999999.txt")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
 
