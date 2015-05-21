@@ -556,3 +556,14 @@ TSDtables <- extractTablesIS(datapub)
 inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
 addDPD(TSDtables[[1]])
 
+# groundwater conductivity
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/groundwater_conductivity/dataPubInfo/gwc_datapub_NEONDOC999999.txt")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])
+
+# groundwater elevation
+datapub <- read.delim("/Users/clunch/landWaterSoilIPT/groundwater_elev/dataPubInfo/gwe_datapub_NEONDOC201000.txt")
+TSDtables <- extractTablesIS(datapub)
+inputDataPubIS(datapub,TSDtables[[2]],TSDtables[[3]],TSDtables[[4]],db)
+addDPD(TSDtables[[1]])

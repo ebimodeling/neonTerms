@@ -113,7 +113,18 @@ q <- paste("SELECT TableDPLink.dpID, TableDefinition.termID, TableDefinition.tab
 dbGetQuery(dbConnect(dbDriver("SQLite"),db), q)
 
 
-
+# get term numbers for a given data product - this is to assign numbers manually
+q <- paste("SELECT TermDefinition.termName, TermDefinition.termID FROM 
+           TermDefinition
+           WHERE TermDefinition.termName IN ('", 
+           paste(datapub$fieldName, collapse="','"), "') ",
+           sep="")
+dum <- dbGetQuery(dbConnect(dbDriver("SQLite"),db), q)
+dum2 <- numeric(nrow(datapub))
+for(i in 1:length(dum2)) {
+  dum2[i] <- dum$termID[which(dum$termName==datapub$fieldName[i])]
+}
+write.table(dum2, file="/Users/clunch/Desktop/termIDs.csv", sep=",")
 
 
 # get all uses of uid
