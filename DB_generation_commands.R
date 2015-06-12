@@ -32,8 +32,8 @@ options(stringsAsFactors=F, strip.white=T)
 createDB("november.sqlite") 
 
 # carry on
-db <- "november.sqlite"
-options(termDB="november.sqlite")
+db <- "november copy.sqlite"
+options(termDB="november copy.sqlite")
 
 
 # TOS
