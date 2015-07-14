@@ -34,6 +34,30 @@ termLookUp("tagID")
 divTerms <- termDefLookUp(datapub)
 
 
+### assign numbers manually
+
+# read in new terms to term definition table ONLY
+df.dum <- read.delim("/Users/clunch/Desktop/wc_terms.txt", sep="\t")
+addTermDef(df.dum)
+
+# get term numbers for a given data product - this is to assign numbers manually
+datapub <- read.delim("/Users/clunch/biogeochemistryIPT/StreamWaterChem/swc_datapub_NEONDOC002292.txt")
+datapub <- datapub[,7:8]
+q <- paste("SELECT TermDefinition.termName, TermDefinition.termID FROM 
+           TermDefinition
+           WHERE TermDefinition.termName IN ('", 
+           paste(datapub$fieldName, collapse="','"), "') ",
+           sep="")
+dum <- dbGetQuery(dbConnect(dbDriver("SQLite"),db), q)
+dum2 <- numeric(nrow(datapub))
+for(i in 1:length(dum2)) {
+  dum2[i] <- dum$termID[which(dum$termName==datapub$fieldName[i])]
+}
+write.table(dum2, file="/Users/clunch/Desktop/termIDs.csv", sep=",")
+
+
+
+
 ########## TERM ALIGNMENT
 # comparing term names against controlled vocabulary list:
 controlled <- read.csv("/Users/clunch/organismalIPT/controlFieldNames/Controlled_fieldNames.csv", 
