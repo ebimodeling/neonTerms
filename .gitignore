@@ -2,3 +2,6 @@
 .Rproj*
 *~
 .Rproj.user
+.R*
+test.sqlite
+.DS_Store
